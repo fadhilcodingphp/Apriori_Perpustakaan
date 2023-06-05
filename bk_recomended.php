@@ -40,12 +40,12 @@
                     <ul class="site-menu js-clone-nav d-none d-xl-block ml-3 pl-0">
                         <li><a href="index.php">Home</a></li>
                         <li class="has-children">
-                            <a href="">Daftar Buku</a>
+                            <a href="" class="nav-link active">Daftar Buku</a>
                             <ul class="dropdown">
                                 <li><a href="bk_recomended.php">Buku Recommended</a></li>
                             </ul>
                         </li>
-                        <li><a href="riwayatpinjam.php" class="nav-link active">Riwayat Peminjaman</a></li>
+                        <li><a href="riwayatpinjam.php">Riwayat Peminjaman</a></li>
                         <li class="has-children">
                             <a href="">Proses Data</a>
                             <ul class="dropdown">
@@ -75,7 +75,7 @@
     <div class="tabel">
         <div class="tombol">
             <div class="input-group mb-3">
-                <a class="btn btn-dark" href="../detail/index.php" role="button">Tambah Data Peminjam</a>
+                <a class="btn btn-dark" href="../detail/index.php" role="button">Tambah Data Buku</a>
                 <div class="input-group-append">
                     <input type="text" class="form-control" ;" placeholder="Masukkan Keyword Pencarian">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>

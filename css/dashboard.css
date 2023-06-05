@@ -26,12 +26,24 @@ body {
         font-size: 1rem;
       }
       
-      .table{
-        margin-top: -500px;
+      .tabel{
+        margin: 0 auto;
+        margin-top: -520px;
         width: 1200px;
         background-color: #fff;
-      }
+    }
+    .tombol{
+        padding: 20px;
+    }
+    
+    .pagination{
+        padding: 10px;
+    }
 
+    .input-group-append{
+        margin-left: 672px;
+    }
+    
   p {
     color: #b3b3b3;
     font-weight: 300; }
