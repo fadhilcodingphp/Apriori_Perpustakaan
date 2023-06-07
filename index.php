@@ -1,24 +1,7 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <title>Dashboard | Rule Library</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Style -->
-    <link rel="stylesheet" href="css/template.css">
-</head>
+<?php
+include 'header.php';
+?>
+<title>Dashboard | Rule Library</title>
 
 <body>
     <div class="site-mobile-menu site-navbar-target">
@@ -40,10 +23,62 @@
                     <ul class="site-menu js-clone-nav d-none d-xl-block ml-3 pl-0">
                         <li><a href="index.php" class="nav-link active">Home</a></li>
                         <li class="has-children">
-                            <a href="">Daftar Buku</a>
+                            <a href="#">Daftar Buku</a>
                             <ul class="dropdown">
-                                <li><a href="bk_recomended.php">Buku Recommended</a></li>
+                                <li><a href="bk_recomended.php">Buku Recomended</a></li>
+                                <li><a href="#">Buku Agama</a></li>
+                                <li><a href="#">Buku Pengetahuan Umum</a></li>
+                                <li><a href="#">Buku Cerita</a></li>
+                                <li class="has-children">
+                                    <a href="#">TKJ</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Kelas 1</a></li>
+                                        <li><a href="#">Kelas 2</a></li>
+                                        <li><a href="#">Kelas 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="../buku/tkr.php">TKR</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Kelas 1</a></li>
+                                        <li><a href="#">Kelas 2</a></li>
+                                        <li><a href="#">Kelas 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="../buku/tsm.php">TSM</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Kelas 1</a></li>
+                                        <li><a href="#">Kelas 2</a></li>
+                                        <li><a href="#">Kelas 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="../buku/tav.php">TAV</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Kelas 1</a></li>
+                                        <li><a href="#">Kelas 2</a></li>
+                                        <li><a href="#">Kelas 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="#">RPL</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Kelas 1</a></li>
+                                        <li><a href="#">Kelas 2</a></li>
+                                        <li><a href="#">Kelas 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="#">MULTIMEDIA</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Kelas 1</a></li>
+                                        <li><a href="#">Kelas 2</a></li>
+                                        <li><a href="#">Kelas 3</a></li>
+                                    </ul>
+                                </li>
                             </ul>
+                        </li>
                         </li>
                         <li><a href="riwayatpinjam.php">Riwayat Peminjaman</a></li>
                         <li class="has-children">
@@ -65,7 +100,7 @@
 
                 <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
                     <div class="ml-auto">
-                        <a href="login.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Login</a>
+                        <a href="login/index.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Login</a>
                     </div>
                 </div>
             </div>
@@ -98,13 +133,6 @@
                 <a href="#">Selengkapnya>>></a>
             </div>
         </div>
-    </div>
-    <div class="footer">
-        <nav class="navbar fixed-bottom navbar-light bg-light">
-            <div class="isifooter">
-                <a class="navbar-brand" href="#">Copyrigt @Muhammad Fadhil AY</a>
-            </div>
-        </nav>
     </div>
     <?php
     include 'footer.php';

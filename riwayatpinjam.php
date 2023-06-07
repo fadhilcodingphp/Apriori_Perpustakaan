@@ -1,24 +1,7 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <title>Riwayat Peminjaman | Rule Library</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Style -->
-    <link rel="stylesheet" href="css/template.css">
-</head>
+<?php
+include 'header.php';
+?>
+<title>Riwayat Peminjaman | Rule Library</title>
 
 <body>
     <div class="site-mobile-menu site-navbar-target">
@@ -65,7 +48,7 @@
 
                 <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
                     <div class="ml-auto">
-                        <a href="login.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Login</a>
+                        <a href="login/index.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Login</a>
                     </div>
                 </div>
             </div>
