@@ -44,6 +44,11 @@ body {
         margin-left: 672px;
     }
     
+    .card-deck{
+      margin: 0 auto;
+      margin-top: -500px;
+  }
+  
   p {
     color: #b3b3b3;
     font-weight: 300; }

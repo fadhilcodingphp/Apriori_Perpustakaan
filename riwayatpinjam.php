@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/template.css">
 </head>
 
 <body>
