@@ -79,7 +79,6 @@ include 'header.php';
                                 </li>
                             </ul>
                         </li>
-                        </li>
                         <li><a href="riwayatpinjam.php">Riwayat Peminjaman</a></li>
                         <li class="has-children">
                             <a href="">Proses Data</a>
