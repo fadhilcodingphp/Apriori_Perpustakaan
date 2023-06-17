@@ -43,7 +43,6 @@ if (!isset($_SESSION['rolesiswa'])) {
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="site-logo col-3"><a href="index.php">PERPUSTAKAAN SMK NEGERI LABUANG</a></div>
-
                 <nav class="mx-auto site-navigation">
                     <ul class="site-menu js-clone-nav d-none d-xl-block ml-3 pl-0">
                         <li><a href="dashboard.php" class="nav-link active">Home</a></li>
@@ -105,7 +104,7 @@ if (!isset($_SESSION['rolesiswa'])) {
                             </ul>
                         </li>
                         <li><a href="profile.php">Profile</a></li>
-                        <li><a href="#">Setting</a></li>
+                        <li><a href="#">Settings</a></li>
                     </ul>
                 </nav>
 

@@ -7,7 +7,7 @@ require 'header.php';
         <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
                 <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
-                <div class="mt-3">
+                <div class="mt-2">
                     <h4>John Doe</h4>
                 </div>
             </div>

@@ -6,8 +6,8 @@ require 'header.php';
     <div class="card">
         <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                <div class="mt-3">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="110">
+                <div class="mt-1">
                     <h4>John Doe</h4>
                 </div>
             </div>
