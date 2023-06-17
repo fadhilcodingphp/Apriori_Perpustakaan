@@ -46,9 +46,9 @@ if (!isset($_SESSION['rolesiswa'])) {
 
                 <nav class="mx-auto site-navigation">
                     <ul class="site-menu js-clone-nav d-none d-xl-block ml-3 pl-0">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="index.php" class="nav-link active">Home</a></li>
                         <li class="has-children">
-                            <a href="#" class="nav-link active">Daftar Buku</a>
+                            <a href="#">Daftar Buku</a>
                             <ul class="dropdown">
                                 <li><a href="bk_recomended.php">Buku Recomended</a></li>
                                 <li><a href="#">Buku Agama</a></li>
@@ -104,13 +104,8 @@ if (!isset($_SESSION['rolesiswa'])) {
                                 </li>
                             </ul>
                         </li>
-                        <li class="has-children">
-                            <a href="">About</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">Settings</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Setting</a></li>
                     </ul>
                 </nav>
 
