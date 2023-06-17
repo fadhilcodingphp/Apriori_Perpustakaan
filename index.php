@@ -105,7 +105,7 @@ include 'header.php';
             </div>
         </div>
     </header>
-    <div class="hero" style="background-image: url('images/background.jpg');"></div>
+    <div class="hero" style="background-image: url('assets/images/background.jpg');"></div>
 
     <div class="card-deck col-9">
         <div class="card">

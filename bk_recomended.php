@@ -105,7 +105,7 @@ include 'header.php';
             </div>
         </div>
     </header>
-    <div class="hero" style="background-image: url('images/background.jpg');"></div>
+    <div class="hero" style="background-image: url('assets/images/background.jpg');"></div>
     <div class="tabel">
         <div class="tombol">
             <div class="input-group mb-3">
