@@ -47,7 +47,13 @@ if (!isset($_SESSION['roleadmin'])) {
                 <nav class="mx-auto site-navigation">
                     <ul class="site-menu js-clone-nav d-none d-xl-block ml-3 pl-0">
                         <li><a href="index.php" class="nav-link active">Home</a></li>
-                        <li><a href="#">Daftar Buku</a></li>
+                        <li class="has-children">
+                            <a href="">Buku</a>
+                            <ul class="dropdown">
+                                <li><a href="kategori.php">Kategori Buku</a></li>
+                                <li><a href="buku.php">Daftar Buku</a></li>
+                            </ul>
+                        </li>
                         <li><a href="riwayatpinjam.php">Riwayat Peminjaman</a></li>
                         <li class="has-children">
                             <a href="">Proses Data</a>

@@ -6,10 +6,11 @@ include 'header.php';
 <div class="tabel">
     <div class="tombol">
         <div class="input-group mb-3">
-            <a class="btn btn-dark" href="../detail/index.php" role="button">Tambah Data Buku</a>
-            <div class="input-group-append">
-                <input type="text" class="form-control" ;" placeholder="Masukkan Keyword Pencarian">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            <div class="search">
+                <div class="input-group-append">
+                    <input type="text" class="form-control" ; placeholder="Masukkan Keyword Pencarian">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                </div>
             </div>
         </div>
     </div>

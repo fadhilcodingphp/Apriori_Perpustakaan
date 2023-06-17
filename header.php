@@ -46,7 +46,7 @@ if (!isset($_SESSION['rolesiswa'])) {
 
                 <nav class="mx-auto site-navigation">
                     <ul class="site-menu js-clone-nav d-none d-xl-block ml-3 pl-0">
-                        <li><a href="index.php" class="nav-link active">Home</a></li>
+                        <li><a href="dashboard.php" class="nav-link active">Home</a></li>
                         <li class="has-children">
                             <a href="#">Daftar Buku</a>
                             <ul class="dropdown">
@@ -104,7 +104,7 @@ if (!isset($_SESSION['rolesiswa'])) {
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="profile.php">Profile</a></li>
                         <li><a href="#">Setting</a></li>
                     </ul>
                 </nav>

@@ -1,16 +1,12 @@
 <?php
 include 'header.php';
 ?>
-<title>Riwayat Peminjaman | Rule Library</title>
+<title>Kategori Buku | Rule Library</title>
 
-<div class="tabel">
+<div class="tabelkategori">
     <div class="tombol">
         <div class="input-group mb-3">
-            <a class="btn btn-dark" href="riwayatpinjamTambah.php" role="button">Tambah Data Peminjam</a>
-            <div class="input-group-append">
-                <input type="text" class="form-control" ;" placeholder="Masukkan Keyword Pencarian">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-            </div>
+            <a class="btn btn-dark" href="kategoriTambah.php" role="button">Tambah Kategori</a>
         </div>
     </div>
     <table class="table">
@@ -18,10 +14,8 @@ include 'header.php';
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Kelas</th>
-                    <th scope="col">Tanggal Pinjam</th>
-                    <th scope="col">Tanggal Kembali</th>
+                    <th scope="col">ID Kategori</th>
+                    <th scope="col">Nama Kategori</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -30,11 +24,10 @@ include 'header.php';
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
                     <td>
                         <a class="btn btn-primary" href="#" role="button">Detail</a>&nbsp;
                         <a class="btn btn-danger" href="#" role="button">Edit</a>
+                        <a class="btn btn-dark" href="#" role="button">Hapus</a>
                     </td>
                 </tr>
             </tbody>

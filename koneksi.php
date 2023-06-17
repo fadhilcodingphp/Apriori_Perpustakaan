@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
         } else {
             $_SESSION['log'] = 'Logged';
             $_SESSION['rolesiswa'] = 'Siswa';
-            header('location:../index.php');
+            header('location:../dashboard.php');
         }
     } else {
         $error = true;

@@ -30,8 +30,51 @@ body {
         margin: 0 auto;
         margin-top: -520px;
         width: 1200px;
+        padding: 20px;
+        border-radius: 10px;
         background-color: #fff;
+        opacity: 0.9;
     }
+       .tabelkategori{
+        margin: 0 auto;
+        margin-top: -520px;
+        width: 800px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        opacity: 0.9;
+    }
+
+    .addbook{
+      margin: 0 auto;
+      margin-top: -520px;
+      width: 400px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      opacity: 0.9;
+    }
+    
+    .addkategori{
+      margin: 0 auto;
+      margin-top: -480px;
+      width: 400px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      opacity: 0.9;
+    }
+    
+    .addpinjam{
+      margin: 0 auto;
+      margin-top: -530px;
+      width: 400px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      opacity: 0.9;
+    }
+
     .tombol{
         padding: 20px;
     }
@@ -41,14 +84,33 @@ body {
     }
 
     .input-group-append{
-        margin-left: 672px;
+        margin-left: 630px;
+    }
+    .searchbook{
+        margin-left: 35px;
     }
     
+    .search{
+        margin-left: -630px;
+    }
+       
     .card-deck{
       margin: 0 auto;
       margin-top: -500px;
   }
   
+  .profile{
+    margin: 0 auto;
+    margin-top: -580px;
+    width: 700px;
+    opacity: 0.9;
+  }
+
+  .isiprofile{
+    margin: 0 auto;
+    width: 600px;
+  }
+
   p {
     color: #b3b3b3;
     font-weight: 300; }
@@ -65,7 +127,7 @@ body {
       text-decoration: none !important; }
   
   .hero {
-    height: 100vh;
+    height: 109vh;
     width: 100%;
     background-size: cover;
     background-position: center center;
