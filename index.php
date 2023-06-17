@@ -79,14 +79,6 @@ include 'header.php';
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="riwayatpinjam.php">Riwayat Peminjaman</a></li>
-                        <li class="has-children">
-                            <a href="">Proses Data</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Peminjaman Buku Terbanyak</a></li>
-                                <li><a href="#">Peminjaman Buku Secara Berpasangan</a></li>
-                            </ul>
-                        </li>
                         <li class="has-children">
                             <a href="">About</a>
                             <ul class="dropdown">
@@ -99,7 +91,7 @@ include 'header.php';
 
                 <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
                     <div class="ml-auto">
-                        <a href="login/index.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Login</a>
+                        <a href="logout.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Logout</a>
                     </div>
                 </div>
             </div>
