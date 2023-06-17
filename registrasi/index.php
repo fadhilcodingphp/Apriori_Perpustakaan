@@ -1,3 +1,18 @@
+<?php
+require '../koneksi.php';
+
+if (isset($_POST["daftar"])) {
+    if (daftar($_POST) > 0) {
+        echo
+        "<script>
+        alert ('userbaru berhasil ditambah')
+        document.location.href='../login/index.php';
+        </script>";
+    } else {
+        echo mysqli_error($koneksi);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +49,11 @@
                     <h2 class="title">Registrasi</h2>
                     <form method="POST">
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Nama Lengkap" name="name">
+                            <input class="input--style-3" type="text" placeholder="Nama Lengkap" name="nama">
                         </div>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="gender">
+                                <select name="kelas">
                                     <option disabled="disabled" selected="selected">Kelas</option>
                                     <option>X TKJ</option>
                                     <option>XI TKJ</option>
@@ -72,7 +87,7 @@
                             <input class="input--style-3" type="password" placeholder="Confirm Password" name="cpassword">
                         </div>
                         <div class="p-t-3">
-                            <button class="btn btn--pill btn--green" type="submit">Daftar</button>
+                            <button class="btn btn--pill btn--green" type="submit" name="daftar">Daftar</button>
                         </div>
                         <p class="spa">Sudah Punya Akun? <a href="../login/index.php">Silahkan Login</a></p>
                     </form>

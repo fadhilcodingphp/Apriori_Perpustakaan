@@ -26,7 +26,7 @@ require '../koneksi.php';
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="post">
+				<form class="login100-form validate-form" method="post" role="form">
 					<span class="login100-form-title p-b-20">
 						<img src="images/logo.png" alt="Image" height="70" width="70">
 					</span>
@@ -35,7 +35,7 @@ require '../koneksi.php';
 					</span>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="username">
+						<input class="input100" type="text" name="username" id="username" required>
 						<span class="focus-input100" data-placeholder="Username"></span>
 					</div>
 
@@ -43,14 +43,16 @@ require '../koneksi.php';
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" name="password">
+						<input class="input100" type="password" name="password" id="password" required>
 						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
-
+					<?php if (isset($error)) : ?>
+						<p class="text-danger">Username/Password tidak sesuai</p>
+					<?php endif; ?>
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" name="login">
+							<button class="login100-form-btn" type="submit" name="login">
 								Login
 							</button>
 						</div>
