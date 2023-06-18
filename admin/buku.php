@@ -35,8 +35,8 @@ include 'header.php';
                     <td>@mdo</td>
                     <td>@mdo</td>
                     <td>
-                        <a class="btn btn-primary" href="#" role="button">Detail</a>&nbsp;
-                        <a class="btn btn-danger" href="#" role="button">Edit</a>
+                        <a class="btn btn-primary" href="bukuDetail.php" role="button">Detail</a>&nbsp;
+                        <a class="btn btn-danger" href="bukuEdit.php" role="button">Edit</a>
                         <a class="btn btn-dark" href="#" role="button">Hapus</a>
                     </td>
                 </tr>

@@ -105,7 +105,23 @@ body {
     width: 700px;
     opacity: 0.9;
   }
+  
+  .editbook{
+    margin: 0 auto;
+    margin-top: -520px;
+    width: 900px;
+    opacity: 0.9;
+  }
 
+  .inputfoto {
+    margin-left: 100px;
+  }
+
+  .isiEdit{
+    margin: 0 auto;
+    width: 800px;
+  }
+  
   .isiprofile{
     margin: 0 auto;
     width: 600px;

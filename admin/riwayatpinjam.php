@@ -18,10 +18,10 @@ include 'header.php';
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama</th>
+                    <th scope="col">Nama Peminjam</th>
                     <th scope="col">Kelas</th>
+                    <th scope="col">Judul Buku</th>
                     <th scope="col">Tanggal Pinjam</th>
-                    <th scope="col">Tanggal Kembali</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -33,8 +33,8 @@ include 'header.php';
                     <td>@mdo</td>
                     <td>@mdo</td>
                     <td>
-                        <a class="btn btn-primary" href="#" role="button">Detail</a>&nbsp;
-                        <a class="btn btn-danger" href="#" role="button">Edit</a>
+                        <a class="btn btn-primary" href="riwayatpinjamDetail.php" role="button">Detail</a>&nbsp;
+                        <a class="btn btn-danger" href="riwayatpinjamEdit.php" role="button">Edit</a>
                     </td>
                 </tr>
             </tbody>

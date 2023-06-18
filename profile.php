@@ -1,7 +1,7 @@
 <?php
 require 'header.php';
 ?>
-
+<title>Profile | Rule Library</title>
 <div class="profile">
     <div class="card">
         <div class="card-body">

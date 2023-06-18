@@ -1,7 +1,7 @@
 <?php
 require 'header.php';
 ?>
-
+<title>Tambah Kategori | Rule Library</title>
 <div class="container">
     <div class="row">
         <div class="col">
