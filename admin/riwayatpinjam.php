@@ -1,5 +1,37 @@
 <?php
 include 'header.php';
+
+//pagination riwayat
+$ambildata = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam");
+//konfigurasi pagination
+$jumlahData = 10;
+$totalData = mysqli_num_rows($ambildata);
+$jumlahPagination = ceil($totalData / $jumlahData);
+
+if (isset($_GET['halaman'])) {
+    $halamanAktif = $_GET['halaman'];
+} else {
+    $halamanAktif = 1;
+}
+
+$dataAwal = ($halamanAktif * $jumlahData) - $jumlahData;
+
+$jumlahLink = 2;
+if ($halamanAktif > $jumlahLink) {
+    $start_number = $halamanAktif - $jumlahLink;
+} else {
+    $start_number = 1;
+}
+
+if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
+    $end_number = $halamanAktif + $jumlahLink;
+} else {
+    $end_number = $jumlahPagination;
+}
+//end
+
+$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMIT $dataAwal, $jumlahData");
+
 ?>
 <title>Riwayat Peminjaman | Rule Library</title>
 

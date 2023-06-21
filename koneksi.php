@@ -3,6 +3,23 @@ $koneksi = mysqli_connect("localhost", "root", "", "skripsiku");
 
 session_start();
 
+function query($query)
+{
+    global $koneksi;
+    $result = mysqli_query($koneksi, $query);
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+function hapus()
+{
+    global $koneksi;
+    return mysqli_affected_rows($koneksi);
+}
+
 // login
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -75,6 +92,24 @@ function tambahKategori($data)
     return mysqli_affected_rows($koneksi);
 }
 
+function ubahKategori($data)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_kategori = htmlspecialchars($data["id_kategori"]);
+    $nama_kategori = htmlspecialchars($data["nama_kategori"]);
+
+    //query insert data
+    $queryinput = "UPDATE kategoribuku SET 
+                    id_kategori='$id_kategori', 
+                    nama_kategori='$nama_kategori'
+                    WHERE id_kategori='$id_kategori'
+                    ";
+    mysqli_query($koneksi, $queryinput);
+
+    return mysqli_affected_rows($koneksi);
+}
+
 // rak
 function tambahRak($data)
 {
@@ -89,33 +124,20 @@ function tambahRak($data)
     return mysqli_affected_rows($koneksi);
 }
 
-//pagination
-$ambildata = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam");
-//konfigurasi pagination
-$jumlahData = 10;
-$totalData = mysqli_num_rows($ambildata);
-$jumlahPagination = ceil($totalData / $jumlahData);
+function ubahRak($data)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_rak = htmlspecialchars($data["id_rak"]);
+    $nama_rak = htmlspecialchars($data["nama_rak"]);
 
-if (isset($_GET['halaman'])) {
-    $halamanAktif = $_GET['halaman'];
-} else {
-    $halamanAktif = 1;
+    //query insert data
+    $queryinput = "UPDATE rakbuku SET 
+                    id_rak='$id_rak', 
+                    nama_rak='$nama_rak'
+                    WHERE id_rak='$id_rak'
+                    ";
+    mysqli_query($koneksi, $queryinput);
+
+    return mysqli_affected_rows($koneksi);
 }
-
-$dataAwal = ($halamanAktif * $jumlahData) - $jumlahData;
-
-$jumlahLink = 2;
-if ($halamanAktif > $jumlahLink) {
-    $start_number = $halamanAktif - $jumlahLink;
-} else {
-    $start_number = 1;
-}
-
-if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
-    $end_number = $halamanAktif + $jumlahLink;
-} else {
-    $end_number = $jumlahPagination;
-}
-//end
-
-$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMIT $dataAwal, $jumlahData");

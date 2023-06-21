@@ -1,12 +1,44 @@
 <?php
 include 'header.php';
+
+//pagination riwayat
+$ambildata = mysqli_query($koneksi, "SELECT * FROM buku");
+//konfigurasi pagination
+$jumlahData = 10;
+$totalData = mysqli_num_rows($ambildata);
+$jumlahPagination = ceil($totalData / $jumlahData);
+
+if (isset($_GET['halaman'])) {
+    $halamanAktif = $_GET['halaman'];
+} else {
+    $halamanAktif = 1;
+}
+
+$dataAwal = ($halamanAktif * $jumlahData) - $jumlahData;
+
+$jumlahLink = 2;
+if ($halamanAktif > $jumlahLink) {
+    $start_number = $halamanAktif - $jumlahLink;
+} else {
+    $start_number = 1;
+}
+
+if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
+    $end_number = $halamanAktif + $jumlahLink;
+} else {
+    $end_number = $jumlahPagination;
+}
+//end
+
+$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM buku LIMIT $dataAwal, $jumlahData");
+
 ?>
-<title>Daftar Buku | Rule Library</title>
+<title>Daftar Buku| Rule Library</title>
 
 <div class="tabel">
     <div class="tombol">
         <div class="input-group mb-3">
-            <a class="btn btn-dark" href="bukuTambah.php" role="button">Tambah Data Buku</a>
+            <a class="btn btn-dark" href="bukuTambah.php" role="button">Tambah Buku</a>
             <div class="searchbook">
                 <div class="input-group-append">
                     <input type="text" class="form-control" ;" placeholder="Masukkan Keyword Pencarian">
@@ -15,6 +47,38 @@ include 'header.php';
             </div>
         </div>
     </div>
+    <h4 class="paginationriwayat">
+        <span class="previous">
+            <?php if ($halamanAktif > 1) : ?>
+                <a href="?halaman=<?php echo $halamanAktif - 1 ?>">
+                    Previous
+                </a>
+            <?php endif; ?>
+        </span>
+        <span class="isipagination">
+            <?php for ($i = $start_number; $i <= $end_number; $i++) : ?>
+                <span class="angkapagination">
+                    <?php if ($halamanAktif == $i) : ?>
+                        <a href="?halaman=<?php echo $i; ?>" style="background:rgb(189, 225, 248);">
+                            <?php echo $i; ?>
+                        </a>
+
+                    <?php else : ?>
+                        <a href="?halaman=<?php echo $i; ?>">
+                            <?php echo $i; ?>
+                        </a>
+                    <?php endif; ?>
+                </span>
+            <?php endfor; ?>
+        </span>
+        <span class="next">
+            <?php if ($halamanAktif < $jumlahPagination) : ?>
+                <a href="?halaman=<?php echo $halamanAktif + 1 ?>">
+                    Next
+                </a>
+            <?php endif; ?>
+        </span>
+    </h4>
     <table class="table">
         <div class="thead">
             <thead>
@@ -28,38 +92,27 @@ include 'header.php';
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>
-                        <a class="btn btn-primary" href="bukuDetail.php" role="button">Detail</a>&nbsp;
-                        <a class="btn btn-danger" href="bukuEdit.php" role="button">Edit</a>
-                        <a class="btn btn-dark" href="#" role="button">Hapus</a>
-                    </td>
-                </tr>
+                <?php
+                $no = 0 + $dataAwal;
+                while ($row = mysqli_fetch_assoc($ambildata_perhalaman)) {
+                    $no++;
+                ?>
+                    <tr>
+                        <th scope="row"><?php echo $no; ?></th>
+                        <td><?php echo $row["id_kategori"] ?></td>
+                        <td><?php echo $row["judul_buku"] ?></td>
+                        <td><?php echo $row["jumlah_buku"] ?></td>
+                        <td>Belum ada gambar</td>
+                        <td>
+                            <a class="btn btn-primary" href="bukuDetail.php" role="button">Detail</a>&nbsp;
+                            <a class="btn btn-danger" href="bukuEdit.php" role="button">Edit</a>
+                            <a class="btn btn-dark" href="bukuHapus.php" role="button">Hapus</a>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </div>
     </table>
-    <div class="pagination">
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">2</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
 </div>
 <?php
 include 'footer.php';

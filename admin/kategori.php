@@ -42,7 +42,7 @@ include 'header.php';
                         <td><?php echo $d['nama_kategori']; ?></td>
                         <td>
                             <a class="btn btn-primary" href="kategoriEdit.php?id=<?= $d['id_kategori']; ?>" role="button">Edit</a>
-                            <a class="btn btn-danger" href="#" role="button">Hapus</a>
+                            <a class="btn btn-danger" href="kategoriHapus.php?id=<?= $d['id_kategori']; ?>" role="button">Hapus</a>
                         </td>
                     </tr>
                 <?php
