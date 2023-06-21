@@ -1,5 +1,37 @@
 <?php
 include 'header.php';
+
+$ambildata = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam");
+//konfigurasi pagination
+$jumlahData = 10;
+$totalData = mysqli_num_rows($ambildata);
+$jumlahPagination = ceil($totalData / $jumlahData);
+
+if (isset($_GET['halaman'])) {
+    $halamanAktif = $_GET['halaman'];
+} else {
+    $halamanAktif = 1;
+}
+
+$dataAwal = ($halamanAktif * $jumlahData) - $jumlahData;
+
+$jumlahLink = 3;
+if ($halamanAktif > $jumlahLink) {
+    $start_number = $halamanAktif - $jumlahLink;
+} else {
+    $start_number = 1;
+}
+
+if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
+    $end_number = $halamanAktif + $jumlahLink;
+} else {
+    $end_number = $jumlahPagination;
+}
+//end
+
+$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMIT $dataAwal, $jumlahData");
+
+
 ?>
 <title>Riwayat Peminjaman | Rule Library</title>
 
@@ -13,6 +45,31 @@ include 'header.php';
             </div>
         </div>
     </div>
+    <h4>
+        <?php if ($halamanAktif > 1) : ?>
+            <a href="?halaman=<?php echo $halamanAktif - 1 ?>">
+                &laquo;
+            </a>
+        <?php endif; ?>
+
+        <?php for ($i = $start_number; $i <= $end_number; $i++) : ?>
+            <?php if ($halamanAktif == $i) : ?>
+                <a href="?halaman=<?php echo $i; ?>" style="color:white; background-color:red; font-weight:bold;">
+                    <?php echo $i; ?>
+                </a>
+            <?php else : ?>
+                <a href="?halaman=<?php echo $i; ?>">
+                    <?php echo $i; ?>
+                </a>
+            <?php endif; ?>
+        <?php endfor; ?>
+
+        <?php if ($halamanAktif < $jumlahPagination) : ?>
+            <a href="?halaman=<?php echo $halamanAktif + 1 ?>">
+                &raquo;
+            </a>
+        <?php endif; ?>
+    </h4>
     <table class="table">
         <div class="thead">
             <thead>
@@ -26,37 +83,26 @@ include 'header.php';
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>
-                        <a class="btn btn-primary" href="riwayatpinjamDetail.php" role="button">Detail</a>&nbsp;
-                        <a class="btn btn-danger" href="riwayatpinjamEdit.php" role="button">Edit</a>
-                    </td>
-                </tr>
+                <?php
+                $no = 0 + $dataAwal;
+                while ($row = mysqli_fetch_assoc($ambildata_perhalaman)) {
+                    $no++;
+                ?>
+                    <tr>
+                        <th scope="row"><?php echo $no; ?></th>
+                        <td><?php echo $row["nama_peminjam"] ?></td>
+                        <td><?php echo $row["kelas_peminjam"] ?></td>
+                        <td><?php echo $row["judul_buku"] ?></td>
+                        <td><?php echo $row["tgl_pinjam"] ?></td>
+                        <td>
+                            <a class="btn btn-primary" href="riwayatpinjamDetail.php" role="button">Detail</a>&nbsp;
+                            <a class="btn btn-danger" href="riwayatpinjamEdit.php" role="button">Edit</a>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </div>
     </table>
-    <div class="pagination">
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">2</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
 </div>
 <?php
 include 'footer.php';

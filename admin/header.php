@@ -1,12 +1,11 @@
 <?php
-session_start();
+require '../koneksi.php';
 
 if (!isset($_SESSION['roleadmin'])) {
     header("Location: ../login/index.php");
     exit;
 }
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -28,7 +27,7 @@ if (!isset($_SESSION['roleadmin'])) {
     <link rel="stylesheet" href="../assets/css/template.css">
 </head>
 
-<body>
+<body background="../assets/images/background.jpg" style="width: 100%;">
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -80,4 +79,3 @@ if (!isset($_SESSION['roleadmin'])) {
             </div>
         </div>
     </header>
-    <div class="hero" style="background-image: url('../assets/images/background.jpg');"></div>

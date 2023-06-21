@@ -2,6 +2,7 @@
 $koneksi = mysqli_connect("localhost", "root", "", "skripsiku");
 
 session_start();
+
 // login
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -57,5 +58,19 @@ function daftar($daftar)
 
     //tambah user baru ke database
     mysqli_query($koneksi, "INSERT INTO users VALUES ('', '$nama', '$username', '$password' , '$password2', '$kelas', 'siswa')");
+    return mysqli_affected_rows($koneksi);
+}
+
+// kategori
+function tambahKategori($data)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_kategori = htmlspecialchars($data["id_kategori"]);
+    $nama_kategori = htmlspecialchars($data["nama_kategori"]);
+
+    //query insert data
+    $queryinput = "INSERT INTO kategoribuku VALUES ('$id_kategori', '$nama_kategori')";
+    mysqli_query($koneksi, $queryinput);
     return mysqli_affected_rows($koneksi);
 }
