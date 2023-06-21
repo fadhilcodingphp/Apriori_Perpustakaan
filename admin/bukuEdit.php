@@ -20,9 +20,10 @@ if (isset($_POST["submit"])) {
         ";
     }
 }
+//ambil data di URL
 $id = $_GET["id"];
 // query data mhs berdasarkan id
-$ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND buku.id_kategori = kategoribuku.id_kategori")[0];
+$ambildata = query("SELECT * FROM buku WHERE id_buku = '$id'")[0];
 ?>
 <title>Edit Buku | Rule Library</title>
 <div class="editbook">
@@ -50,7 +51,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                         <h6 class="mb-0">ID Kategori</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="id_kategori" id="id_kategori" class="form-control" value="<?php echo $ambildata["id_kategori"] ?>">
+                                        <input type="text" name="id_kategori" id="id_kategori" class="form-control" value="<?php echo $ambildata["id_kategori"] ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -58,7 +59,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                         <h6 class="mb-0">Judul Buku</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="judul_buku" id="judul_buku" class="form-control" value="<?php echo $ambildata["judul_buku"] ?>">
+                                        <input type="text" name="judul_buku" id="judul_buku" class="form-control" value="<?php echo $ambildata["judul_buku"] ?>" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -66,14 +67,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                         <h6 class="mb-0">Jumlah Buku</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="jumlah_buku" id="jumlah_buku" class="form-control" value="<?php echo $ambildata["jumlah_buku"] ?>">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-7">
-                                        <div class="input-group mb-3">
-                                            <input type="file" name="gambar" id="inputGroupFile01">
-                                        </div>
+                                        <input type="text" name="jumlah_buku" id="jumlah_buku" class="form-control" value="<?php echo $ambildata["jumlah_buku"] ?>" required>
                                     </div>
                                 </div>
                                 <div class="row">

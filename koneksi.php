@@ -169,12 +169,11 @@ function ubahBuku($produk)
     $jumlah_buku = htmlspecialchars($produk["jumlah_buku"]);
 
     //query ubah data
-    $ubahproduk = "UPDATE buku, kategoribuku SET
-                    kategoribuku.id_kategori = '$id_kategori', 
-                    buku.judul_buku = '$judul_buku', 
-                    buku.jumlah_buku = '$jumlah_buku'
-                    WHERE  buku.id_kategori = kategoribuku.id_kategori
-                    AND buku.id_buku = $id_buku";
+    $ubahproduk = "UPDATE buku SET
+                    id_kategori = '$id_kategori', 
+                    judul_buku = '$judul_buku', 
+                    jumlah_buku = '$jumlah_buku'
+                    WHERE id_buku = $id_buku";
     mysqli_query($koneksi, $ubahproduk);
     return mysqli_affected_rows($koneksi);
 }
