@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
             <div class="addkategori">
                 <form method="post">
                     <div class="mb-3">
-                        <label for="id_rak" class="form-label">Kategori Rak</label>
+                        <label for="id_rak" class="form-label">ID Rak</label>
                         <input type="text" class="form-control" name="id_rak">
                     </div>
                     <div class="mb-3">

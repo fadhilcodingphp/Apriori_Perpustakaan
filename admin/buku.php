@@ -2,7 +2,7 @@
 include 'header.php';
 
 //pagination riwayat
-$ambildata = mysqli_query($koneksi, "SELECT * FROM buku");
+$ambildata = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori");
 //konfigurasi pagination
 $jumlahData = 10;
 $totalData = mysqli_num_rows($ambildata);
@@ -30,7 +30,7 @@ if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
 }
 //end
 
-$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM buku LIMIT $dataAwal, $jumlahData");
+$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori LIMIT $dataAwal, $jumlahData");
 
 ?>
 <title>Daftar Buku| Rule Library</title>
@@ -104,9 +104,9 @@ $ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM buku LIMIT $dataAw
                         <td><?php echo $row["jumlah_buku"] ?></td>
                         <td>Belum ada gambar</td>
                         <td>
-                            <a class="btn btn-primary" href="bukuDetail.php" role="button">Detail</a>&nbsp;
-                            <a class="btn btn-danger" href="bukuEdit.php" role="button">Edit</a>
-                            <a class="btn btn-dark" href="bukuHapus.php" role="button">Hapus</a>
+                            <a class="btn btn-primary" href="bukuDetail.php?id=<?= $row['id_buku']; ?>" role="button">Detail</a>&nbsp;
+                            <a class="btn btn-danger" href="bukuEdit.php?id=<?= $row['id_buku']; ?>" role="button">Edit</a>
+                            <a class="btn btn-dark" href="bukuHapus.php?id=<?= $row['id_buku']; ?>" role="button">Hapus</a>
                         </td>
                     </tr>
                 <?php } ?>

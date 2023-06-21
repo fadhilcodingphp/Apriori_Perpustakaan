@@ -1,5 +1,28 @@
 <?php
 require 'header.php';
+
+//cek apakah tombol submit sudah ditekan atau belum
+if (isset($_POST["submit"])) {
+    //cek apakah data berhasil diubah atau tidak
+    if (ubahBuku($_POST) > 0) {
+        echo "
+        <script>
+        alert('Data berhasil diubah');
+        document.location.href='buku.php';
+        </script>
+        ";
+    } else {
+        echo "
+        <script>
+        alert('Data Gagal Diubah');
+        document.location.href='bukuEdit.php';
+        </script>
+        ";
+    }
+}
+$id = $_GET["id"];
+// query data mhs berdasarkan id
+$ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND buku.id_kategori = kategoribuku.id_kategori")[0];
 ?>
 <title>Edit Buku | Rule Library</title>
 <div class="editbook">
@@ -21,50 +44,49 @@ require 'header.php';
                 <div class="col-sm-9">
                     <div class="card mt-3 mb-3">
                         <div class="card-body">
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">ID Kategori</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="John Doe">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Judul Buku</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="john@example.com">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Jumlah Buku</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="john@example.com">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-7">
-                                    <div class="input-group mb-3">
-                                        <input type="file" id="inputGroupFile01">
+                            <form action="" method="post">
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">ID Kategori</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="id_kategori" id="id_kategori" class="form-control" value="<?php echo $ambildata["id_kategori"] ?>">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="button" class="btn btn-primary px-4" value="Save Changes">
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Judul Buku</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="judul_buku" id="judul_buku" class="form-control" value="<?php echo $ambildata["judul_buku"] ?>">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Jumlah Buku</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="jumlah_buku" id="jumlah_buku" class="form-control" value="<?php echo $ambildata["jumlah_buku"] ?>">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-7">
+                                        <div class="input-group mb-3">
+                                            <input type="file" name="gambar" id="inputGroupFile01">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="submit" name="submit" class="btn btn-primary px-4" value="Save Changes">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
         <?php
         require 'footer.php';

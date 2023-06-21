@@ -141,3 +141,40 @@ function ubahRak($data)
 
     return mysqli_affected_rows($koneksi);
 }
+
+
+//buku
+function tambahBuku($Buku)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_kategori = htmlspecialchars($Buku["id_kategori"]);
+    $judul_buku = htmlspecialchars($Buku["judul_buku"]);
+    $jumlah_buku = htmlspecialchars($Buku["jumlah_buku"]);
+
+    //query insert data
+    $inputProduk = "INSERT INTO buku VALUES ('', '$id_kategori','$judul_buku', '$jumlah_buku', '')";
+    mysqli_query($koneksi, $inputProduk);
+
+    return mysqli_affected_rows($koneksi);
+}
+
+function ubahBuku($produk)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_buku = htmlspecialchars($produk["id_buku"]);
+    $id_kategori = htmlspecialchars($produk["id_kategori"]);
+    $judul_buku = htmlspecialchars($produk["judul_buku"]);
+    $jumlah_buku = htmlspecialchars($produk["jumlah_buku"]);
+
+    //query ubah data
+    $ubahproduk = "UPDATE buku, kategoribuku SET
+                    kategoribuku.id_kategori = '$id_kategori', 
+                    buku.judul_buku = '$judul_buku', 
+                    buku.jumlah_buku = '$jumlah_buku'
+                    WHERE  buku.id_kategori = kategoribuku.id_kategori
+                    AND buku.id_buku = $id_buku";
+    mysqli_query($koneksi, $ubahproduk);
+    return mysqli_affected_rows($koneksi);
+}

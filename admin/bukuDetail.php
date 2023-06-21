@@ -1,5 +1,10 @@
 <?php
 require 'header.php';
+
+//ambil data di URL
+$id = $_GET["id"];
+// query data mhs berdasarkan id
+$ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND buku.id_kategori = kategoribuku.id_kategori")[0];
 ?>
 <title>Detail Buku | Rule Library</title>
 <div class="editbook">
@@ -12,9 +17,6 @@ require 'header.php';
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="110">
-                            <div class="mt-1">
-                                <h4>John Doe</h4>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -26,7 +28,16 @@ require 'header.php';
                                     <h6 class="mb-0">ID Kategori</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Kenneth Valdez
+                                    <?php echo $ambildata["id_kategori"] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Nama Kategori</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <?php echo $ambildata["nama_kategori"] ?>
                                 </div>
                             </div>
                             <hr>
@@ -35,7 +46,7 @@ require 'header.php';
                                     <h6 class="mb-0">Judul Buku</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    fip@jukmuh.al
+                                    <?php echo $ambildata["judul_buku"] ?>
                                 </div>
                             </div>
                             <hr>
@@ -44,13 +55,13 @@ require 'header.php';
                                     <h6 class="mb-0">Jumlah Buku</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    (239) 816-9029
+                                    <?php echo $ambildata["jumlah_buku"] ?>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info" href="bukuEdit.php">Edit</a>
+                                    <a class="btn btn-info" href="bukuEdit.php?id=<?= $ambildata['id_buku']; ?>">Edit</a>
                                 </div>
                             </div>
                         </div>
