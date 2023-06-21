@@ -74,3 +74,48 @@ function tambahKategori($data)
     mysqli_query($koneksi, $queryinput);
     return mysqli_affected_rows($koneksi);
 }
+
+// rak
+function tambahRak($data)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_rak = htmlspecialchars($data["id_rak"]);
+    $nama_rak = htmlspecialchars($data["nama_rak"]);
+
+    //query insert data
+    $queryinput = "INSERT INTO rakbuku VALUES ('$id_rak', '$nama_rak')";
+    mysqli_query($koneksi, $queryinput);
+    return mysqli_affected_rows($koneksi);
+}
+
+//pagination
+$ambildata = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam");
+//konfigurasi pagination
+$jumlahData = 10;
+$totalData = mysqli_num_rows($ambildata);
+$jumlahPagination = ceil($totalData / $jumlahData);
+
+if (isset($_GET['halaman'])) {
+    $halamanAktif = $_GET['halaman'];
+} else {
+    $halamanAktif = 1;
+}
+
+$dataAwal = ($halamanAktif * $jumlahData) - $jumlahData;
+
+$jumlahLink = 2;
+if ($halamanAktif > $jumlahLink) {
+    $start_number = $halamanAktif - $jumlahLink;
+} else {
+    $start_number = 1;
+}
+
+if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
+    $end_number = $halamanAktif + $jumlahLink;
+} else {
+    $end_number = $jumlahPagination;
+}
+//end
+
+$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMIT $dataAwal, $jumlahData");

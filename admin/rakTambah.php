@@ -4,16 +4,16 @@ require 'header.php';
 //cek apakah tombol submit sudah ditekan atau belum
 if (isset($_POST["submit"])) {
     //cek apakah data berhasil ditambahkan atau tidak
-    if (tambahKategori($_POST) > 0) {
+    if (tambahRak($_POST) > 0) {
         echo "
          <script>
-         document.location.href='kategori.php';
+         document.location.href='rak.php';
          </script>
          ";
     } else {
         echo "
          <script>
-         document.location.href='kategoriTambah.php';
+         document.location.href='rakTambah.php';
          </script>
          ";
     }
@@ -26,12 +26,12 @@ if (isset($_POST["submit"])) {
             <div class="addkategori">
                 <form method="post">
                     <div class="mb-3">
-                        <label for="id_kategori" class="form-label">ID Kategori</label>
-                        <input type="text" class="form-control" name="id_kategori">
+                        <label for="id_rak" class="form-label">Kategori Rak</label>
+                        <input type="text" class="form-control" name="id_rak">
                     </div>
                     <div class="mb-3">
-                        <label for="nama_kategori" class="form-label">Nama Kategori</label>
-                        <input type="text" class="form-control" name="nama_kategori">
+                        <label for="nama_rak" class="form-label">Nama Rak</label>
+                        <input type="text" class="form-control" name="nama_rak">
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Tambah Kategori</button>
                 </form>

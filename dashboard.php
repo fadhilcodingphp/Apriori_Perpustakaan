@@ -14,17 +14,23 @@ include 'header.php';
     <div class="card">
         <img src="assets/images/background1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Eksemplar : 16000 buku</h5>
-            <p class="card-text">Beberapa judul buku memiliki banyak eksemplar</p>
-            <a href="#">Selengkapnya>>></a>
+            <h5 class="card-title">
+                <?php $get1 = mysqli_query($koneksi, "SELECT*FROM users WHERE role='siswa'");
+                $count1 = mysqli_num_rows($get1);
+                ?>
+                Pengunjung : <b><?= $count1; ?></b> orang</h5>
+            <p class="card-text">User yang telah terdaftar dalam sistem</p>
         </div>
     </div>
     <div class="card">
         <img src="assets/images/background1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Pengunjung : 300 orang</h5>
-            <p class="card-text">User yang telah terdaftar dalam sistem</p>
-            <a href="#">Selengkapnya>>></a>
+            <h5 class="card-title">
+                <?php $get1 = mysqli_query($koneksi, "SELECT*FROM riwayatpinjam WHERE id_pinjam");
+                $count1 = mysqli_num_rows($get1);
+                ?>
+                Transaksi : <b><?= $count1; ?></b> peminjaman</h5>
+            <p class="card-text">Total transaki peminjaman buku</p>
         </div>
     </div>
 </div>

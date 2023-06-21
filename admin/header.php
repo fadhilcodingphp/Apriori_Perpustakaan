@@ -49,6 +49,7 @@ if (!isset($_SESSION['roleadmin'])) {
                         <li class="has-children">
                             <a href="">Buku</a>
                             <ul class="dropdown">
+                                <li><a href="rak.php">Rak Buku</a></li>
                                 <li><a href="kategori.php">Kategori Buku</a></li>
                                 <li><a href="buku.php">Daftar Buku</a></li>
                             </ul>
@@ -57,14 +58,14 @@ if (!isset($_SESSION['roleadmin'])) {
                         <li class="has-children">
                             <a href="">Proses Data</a>
                             <ul class="dropdown">
-                                <li><a href="#">Peminjaman Buku Terbanyak</a></li>
-                                <li><a href="#">Peminjaman Buku Secara Berpasangan</a></li>
+                                <li><a href="aprioriProses.php">Proses Apriori</a></li>
+                                <li><a href="aprioriHasil.php">Hasil Apriori</a></li>
                             </ul>
                         </li>
                         <li class="has-children">
                             <a href="">About</a>
                             <ul class="dropdown">
-                                <li><a href="#">Profile</a></li>
+                                <li><a href="profile.php">Profile</a></li>
                                 <li><a href="#">Settings</a></li>
                             </ul>
                         </li>

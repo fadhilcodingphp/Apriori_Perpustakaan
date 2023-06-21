@@ -1,5 +1,5 @@
 <?php
-session_start();
+require 'koneksi.php';
 
 if (!isset($_SESSION['rolesiswa'])) {
     header("Location: login/index.php");

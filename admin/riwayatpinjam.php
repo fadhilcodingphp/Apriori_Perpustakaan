@@ -1,37 +1,5 @@
 <?php
 include 'header.php';
-
-$ambildata = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam");
-//konfigurasi pagination
-$jumlahData = 10;
-$totalData = mysqli_num_rows($ambildata);
-$jumlahPagination = ceil($totalData / $jumlahData);
-
-if (isset($_GET['halaman'])) {
-    $halamanAktif = $_GET['halaman'];
-} else {
-    $halamanAktif = 1;
-}
-
-$dataAwal = ($halamanAktif * $jumlahData) - $jumlahData;
-
-$jumlahLink = 3;
-if ($halamanAktif > $jumlahLink) {
-    $start_number = $halamanAktif - $jumlahLink;
-} else {
-    $start_number = 1;
-}
-
-if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
-    $end_number = $halamanAktif + $jumlahLink;
-} else {
-    $end_number = $jumlahPagination;
-}
-//end
-
-$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMIT $dataAwal, $jumlahData");
-
-
 ?>
 <title>Riwayat Peminjaman | Rule Library</title>
 
@@ -46,35 +14,43 @@ $ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMI
         </div>
     </div>
     <h4 class="paginationriwayat">
-        <?php if ($halamanAktif > 1) : ?>
-            <a href="?halaman=<?php echo $halamanAktif - 1 ?>">
-                &laquo;
-            </a>
-        <?php endif; ?>
-
-        <?php for ($i = $start_number; $i <= $end_number; $i++) : ?>
-            <?php if ($halamanAktif == $i) : ?>
-                <a href="?halaman=<?php echo $i; ?>" style="color:white; background-color:red; font-weight:bold;">
-                    <?php echo $i; ?>
-                </a>
-            <?php else : ?>
-                <a href="?halaman=<?php echo $i; ?>">
-                    <?php echo $i; ?>
+        <span class="previous">
+            <?php if ($halamanAktif > 1) : ?>
+                <a href="?halaman=<?php echo $halamanAktif - 1 ?>">
+                    Previous
                 </a>
             <?php endif; ?>
-        <?php endfor; ?>
+        </span>
+        <span class="isipagination">
+            <?php for ($i = $start_number; $i <= $end_number; $i++) : ?>
+                <span class="angkapagination">
+                    <?php if ($halamanAktif == $i) : ?>
+                        <a href="?halaman=<?php echo $i; ?>" style="background:rgb(189, 225, 248);">
+                            <?php echo $i; ?>
+                        </a>
 
-        <?php if ($halamanAktif < $jumlahPagination) : ?>
-            <a href="?halaman=<?php echo $halamanAktif + 1 ?>">
-                &raquo;
-            </a>
-        <?php endif; ?>
+                    <?php else : ?>
+                        <a href="?halaman=<?php echo $i; ?>">
+                            <?php echo $i; ?>
+                        </a>
+                    <?php endif; ?>
+                </span>
+            <?php endfor; ?>
+        </span>
+        <span class="next">
+            <?php if ($halamanAktif < $jumlahPagination) : ?>
+                <a href="?halaman=<?php echo $halamanAktif + 1 ?>">
+                    Next
+                </a>
+            <?php endif; ?>
+        </span>
     </h4>
     <table class="table">
         <div class="thead">
             <thead>
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">ID Peminjaman</th>
                     <th scope="col">Nama Peminjam</th>
                     <th scope="col">Kelas</th>
                     <th scope="col">Judul Buku</th>
@@ -90,6 +66,7 @@ $ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMI
                 ?>
                     <tr>
                         <th scope="row"><?php echo $no; ?></th>
+                        <td><?php echo $row["id_pinjam"] ?></td>
                         <td><?php echo $row["nama_peminjam"] ?></td>
                         <td><?php echo $row["kelas_peminjam"] ?></td>
                         <td><?php echo $row["judul_buku"] ?></td>
