@@ -45,7 +45,7 @@ $ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM riwayatpinjam LIMI
             </div>
         </div>
     </div>
-    <h4>
+    <h4 class="paginationriwayat">
         <?php if ($halamanAktif > 1) : ?>
             <a href="?halaman=<?php echo $halamanAktif - 1 ?>">
                 &laquo;
