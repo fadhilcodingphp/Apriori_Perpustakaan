@@ -31,7 +31,7 @@ include 'header.php';
         <img src="../assets/images/background1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">
-                <?php $get1 = mysqli_query($koneksi, "SELECT*FROM riwayatpinjam WHERE id_pinjam");
+                <?php $get1 = mysqli_query($koneksi, "SELECT*FROM riwayatpinjam");
                 $count1 = mysqli_num_rows($get1);
                 ?>
                 Transaksi : <b><?= $count1; ?></b> peminjaman</h5>
