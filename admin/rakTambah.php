@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
     }
 }
 ?>
-<title>Tambah Kategori | Rule Library</title>
+<title>Tambah Rak | Rule Library</title>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
                         <label for="nama_rak" class="form-label">Nama Rak</label>
                         <input type="text" class="form-control" name="nama_rak">
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary">Tambah Kategori</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah Rak</button>
                 </form>
             </div>
         </div>
