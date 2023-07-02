@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
 //ambil data di URL
 $id = $_GET["id"];
 // query data mhs berdasarkan id
-$ambildata = query("SELECT * FROM buku WHERE id_buku = '$id'")[0];
+$ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND buku.id_kategori = kategoribuku.id_kategori")[0];
 ?>
 <title>Edit Buku | Rule Library</title>
 <div class="editbook">
@@ -36,9 +36,6 @@ $ambildata = query("SELECT * FROM buku WHERE id_buku = '$id'")[0];
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
-                            <div class="mt-2">
-                                <h4>John Doe</h4>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -51,7 +48,15 @@ $ambildata = query("SELECT * FROM buku WHERE id_buku = '$id'")[0];
                                         <h6 class="mb-0">ID Kategori</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="id_kategori" id="id_kategori" class="form-control" value="<?php echo $ambildata["id_kategori"] ?>" readonly>
+                                        <select class="form-select" aria-label="Default select example" name="id_kategori">
+                                            <option selected><?= $ambildata['nama_kategori'] ?></option>
+                                            <?php
+                                            $ambil = mysqli_query($koneksi, "SELECT * FROM kategoribuku");
+                                            while ($pecah = mysqli_fetch_assoc($ambil)) {
+                                                echo "<option value=$pecah[id_kategori]> $pecah[nama_kategori]</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

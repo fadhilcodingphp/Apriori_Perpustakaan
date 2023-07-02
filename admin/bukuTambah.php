@@ -40,6 +40,10 @@ if (isset($_POST["submit"])) {
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">ID Buku</label>
+                        <input type="text" class="form-control" name="id_buku">
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Judul Buku</label>
                         <input type="text" class="form-control" name="judul_buku">
                     </div>
