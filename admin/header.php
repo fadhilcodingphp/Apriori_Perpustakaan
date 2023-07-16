@@ -58,7 +58,7 @@ if (!isset($_SESSION['roleadmin'])) {
                         <li class="has-children">
                             <a href="">Proses Data</a>
                             <ul class="dropdown">
-                                <li><a href="aprioriProses.php">Proses Apriori</a></li>
+                                <li><a href="proses_apriori.php">Proses Apriori</a></li>
                                 <li><a href="aprioriHasil.php">Hasil Apriori</a></li>
                             </ul>
                         </li>
