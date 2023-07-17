@@ -1,12 +1,14 @@
 <?php
-include 'header.php';
-?>
-<title>Proses Apriori | Rule Library</title>
-<?php
+//session_start();
+if (!isset($_SESSION['apriori_parfum_id'])) {
+    header("location:index.php?menu=forbidden");
+}
+
 include_once "database.php";
 include_once "fungsi.php";
 include_once "mining.php";
 include_once "display_mining.php";
+include_once "header.php";
 ?>
 <div class="aprioriProses">
     <div class="card">
@@ -19,7 +21,7 @@ include_once "display_mining.php";
 
             <?php
             //object database class
-            $db_object = new apriori();
+            $db_object = new database();
 
             $pesan_error = $pesan_success = "";
             if (isset($_GET['pesan_error'])) {
@@ -83,7 +85,7 @@ include_once "display_mining.php";
                     }
                     //show form for update
                 ?>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-sm-12">
 
                             <form method="post" action="">
@@ -93,13 +95,13 @@ include_once "display_mining.php";
                                         <label>Tanggal: </label>
                                         <div class="input-group">
                                             <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
+                                                <i class="fa fa-calendar mr-2 mt-2"></i>
                                             </div>
                                             <input type="text" class="form-control pull-right" name="range_tanggal" id="id-date-range-picker-1" required="" placeholder="Date range" value="<?php echo $_POST['range_tanggal']; ?>">
                                         </div><!-- /.input group -->
                                     </div><!-- /.form group -->
                                     <div class="form-group">
-                                        <input name="search_display" type="submit" value="Search" class="btn btn-default">
+                                        <input name="search_display" type="submit" value="Search" class="btn btn-success">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 ">
@@ -172,14 +174,14 @@ include_once "display_mining.php";
                 $jumlah = $db_object->db_num_rows($query);
                 ?>
                 <form method="post" action="">
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-lg-6 ">
                             <!-- Date range -->
                             <div class="form-group">
                                 <label>Tanggal: </label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
+                                        <i class="fa fa-calendar mr-2 mt-2"></i>
                                     </div>
                                     <input type="text" class="form-control pull-right" name="range_tanggal" id="id-date-range-picker-1" required="" placeholder="Date range" value="<?php echo $_POST['range_tanggal']; ?>">
                                 </div><!-- /.input group -->
@@ -244,6 +246,3 @@ include_once "display_mining.php";
         </div>
     </div>
 </div>
-<?php
-include 'footer.php';
-?>

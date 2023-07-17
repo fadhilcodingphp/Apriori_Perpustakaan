@@ -46,7 +46,7 @@ function text_with_list_users($label = '', $name = '', $value = '', $required = 
  */
 function list_users($name, $selected_id = '', $required = false, $all = false, $text_all = '-', $where = '', $params = '')
 {
-    $db_obj = new apriori();
+    $db_obj = new database();
 
     $table = TB_PREF . "users";
     $query = $db_obj->display_table_all_column($table, $where, false, false, 0, 0, 'nama');
@@ -124,7 +124,7 @@ function list_levels($name, $selected_id = '', $required = false, $all = false, 
 //END LEVEL USERS===================================================================
 function list_periode($name, $selected_id = '', $required = false, $all = false, $text_all = '-', $where = '', $params = '')
 {
-    $db_obj = new apriori();
+    $db_obj = new database();
 
     $table = "periode";
     $query = $db_obj->display_table_all_column($table, $where, false, false, 0, 0, 'id_periode');
@@ -147,7 +147,7 @@ function list_periode($name, $selected_id = '', $required = false, $all = false,
 
 function list_mata_kuliah($name, $selected_id = '', $required = false, $all = false, $text_all = '-', $where = '', $params = '')
 {
-    $db_obj = new apriori();
+    $db_obj = new database();
 
     $table = "mata_kuliah";
     $query = $db_obj->display_table_all_column($table, $where, false, false, 0, 0, 'id_mk');
@@ -171,7 +171,7 @@ function list_mata_kuliah($name, $selected_id = '', $required = false, $all = fa
 
 function list_dosen($name, $selected_id = '', $required = false, $all = false, $text_all = '-', $where = '', $params = '')
 {
-    $db_obj = new apriori();
+    $db_obj = new database();
 
     $table = "dosen";
     $query = $db_obj->display_table_all_column($table, $where, false, false, 0, 0, 'id_dosen');
