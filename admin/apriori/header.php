@@ -50,6 +50,7 @@
                         <li class="has-children">
                             <a href="../">Proses Data</a>
                             <ul class="dropdown">
+                                <li><a href="index.php?menu=data_transaksi">Laporan Harian</a></li>
                                 <li><a href="index.php?menu=proses_apriori">Proses Apriori</a></li>
                                 <li><a href="index.php?menu=hasil">Hasil Apriori</a></li>
                             </ul>
