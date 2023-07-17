@@ -9,6 +9,7 @@ include_once "database.php";
 include_once "fungsi.php";
 include_once "import/excel_reader2.php";
 ?>
+<title>Transaksi Peminjaman | Rule Library</title>
 <div class="aprioriProses">
     <div class="card">
         <div class="isiproses">

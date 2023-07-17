@@ -10,6 +10,7 @@ include_once "mining.php";
 include_once "display_mining.php";
 include_once "header.php";
 ?>
+<title>Proses Apriori | Rule Library</title>
 <div class="aprioriProses">
     <div class="card">
         <div class="isiproses">
