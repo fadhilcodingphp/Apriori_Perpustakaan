@@ -4,7 +4,8 @@
  * Class Configuration Database
  */
 
-class database {
+class database
+{
 
     private $servername;
     private $user_db;
@@ -16,12 +17,14 @@ class database {
      * fungsi construktor awal dan koneksi ke database;
      * set variable class $this->conn;
      */
-    function database() {
+    function database()
+    {
         $this->load_conf_db();
         return $this->connect_db();
     }
 
-    function load_conf_db() {
+    function load_conf_db()
+    {
         $path = dirname(__FILE__) . '/koneksi.php';
         if (file_exists($path)) {
             $conf = include $path;
@@ -36,7 +39,8 @@ class database {
      * connection database
      * @return type
      */
-    public function connect_db() {
+    public function connect_db()
+    {
         $this->koneksi = mysqli_connect($this->servername, $this->user_db, $this->password_db, $this->database);
         return $this->koneksi;
     }
@@ -46,7 +50,8 @@ class database {
      * @param string $sql
      * @return type
      */
-    function db_query($sql) {
+    function db_query($sql)
+    {
         $conn = $this->koneksi;
         return mysqli_query($conn, $sql);
     }
@@ -55,7 +60,8 @@ class database {
      * mysql_error
      * @return type
      */
-    function db_error($result) {
+    function db_error($result)
+    {
         $conn = $this->koneksi;
         return mysqli_error($conn);
     }
@@ -65,7 +71,8 @@ class database {
      * @param type $result
      * @return type
      */
-    function db_fetch_array($result) {
+    function db_fetch_array($result)
+    {
         return mysqli_fetch_array($result);
     }
 
@@ -74,7 +81,8 @@ class database {
      * @param type $result
      * @return type
      */
-    function db_num_rows($result) {
+    function db_num_rows($result)
+    {
         return mysqli_num_rows($result);
     }
 
@@ -82,14 +90,15 @@ class database {
      * mysql_insert_id
      * @return type
      */
-    function db_insert_id() {
+    function db_insert_id()
+    {
         $conn = $this->koneksi;
         return mysqli_insert_id($conn);
     }
-    
 
 
-//==============================================================================
+
+    //==============================================================================
     /**
      * Insert Data within table by accepting TableName and Table column => Data as associative array
      * contoh $val_cols = array("Name"=>'ido',"Age"=>23);
@@ -97,7 +106,8 @@ class database {
      * @param array $val_cols 
      * @return type hasil query (db_query)
      */
-    function insert_record($table, array $val_cols) {
+    function insert_record($table, array $val_cols)
+    {
         $field = implode("`, `", array_keys($val_cols));
         $i = 0;
         foreach ($val_cols as $key => $value) {
@@ -107,7 +117,7 @@ class database {
         $StValues = implode(", ", $StValue);
 
         $sql = "INSERT INTO $table (`$field`) VALUES ($StValues)";
-        
+
         $result = $this->db_query($sql);
         return $result;
     }
@@ -119,7 +129,8 @@ class database {
      * @param array $val_cols where condition implode by AND
      * @return type hasil query (db_query)
      */
-    function delete_record($table, array $val_cols) {
+    function delete_record($table, array $val_cols)
+    {
         //Append each element of val_cols associative array 
         $i = 0;
         foreach ($val_cols as $key => $value) {
@@ -142,7 +153,8 @@ class database {
      * @param array $cod_val_cols where condition implode by AND
      * @return type
      */
-    function update_record($table, array $set_val_cols, array $cod_val_cols) {
+    function update_record($table, array $set_val_cols, array $cod_val_cols)
+    {
         //append set_val_cols associative array elements 
         $i = 0;
         foreach ($set_val_cols as $key => $value) {
@@ -173,7 +185,8 @@ class database {
      * @param type $where default=null, diisi dengan kolom dan isi nya contoh warna='blue'
      * @return int hasil count (db_fetch_array)
      */
-    function count_data($table, $field, $where = null) {
+    function count_data($table, $field, $where = null)
+    {
         $sql = "SELECT COUNT($field) FROM $table ";
 
         if ($where != null || $where != '') {
@@ -196,7 +209,8 @@ class database {
      * @param type $sort default='', order by...
      * @return fetch/db_query
      */
-    function display_table_all_column($table, $where = null, $fetch = false, $limit = false, $limit_posisi = 0, $limit_batas = 0, $sort = '') {
+    function display_table_all_column($table, $where = null, $fetch = false, $limit = false, $limit_posisi = 0, $limit_batas = 0, $sort = '')
+    {
         $sql = "SELECT * FROM $table ";
 
         if ($where != null || $where != '') {
@@ -227,7 +241,8 @@ class database {
      * @param string $where default=''
      * @return array db_fetch_array
      */
-    function find_in_table($table, $find_column = array(), $where = '') {
+    function find_in_table($table, $find_column = array(), $where = '')
+    {
         $sql = "SELECT ";
         $column = '';
         if (!is_array($find_column)) {
@@ -250,7 +265,8 @@ class database {
      * @param string $value
      * @return boolean true jika ada , false jika tidak ada
      * */
-    function cek_data_is_in_table($table, $field, $value) {
+    function cek_data_is_in_table($table, $field, $value)
+    {
         $sql = "SELECT COUNT(" . $field . ") FROM " . $table . " WHERE " . $field . " = '" . $value . "'";
         $result = $this->db_query($sql);
         $num = $this->db_fetch_array($result);
@@ -267,13 +283,11 @@ class database {
      * @param type $id_login
      * @return type
      */
-    function get_login_by_id($id_login){
-        $sql = "SELECT * FROM login WHERE id_login = ".$id_login;
+    function get_login_by_id($id_login)
+    {
+        $sql = "SELECT * FROM login WHERE id_login = " . $id_login;
         $result = $this->db_query($sql);
         $row = $this->db_fetch_array($result);
         return $row;
     }
-
 }
-
-?>
