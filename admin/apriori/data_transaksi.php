@@ -5,6 +5,7 @@ if (!isset($_SESSION['apriori_parfum_id'])) {
 }
 
 include_once "header.php";
+include_once "footer.php";
 include_once "database.php";
 include_once "fungsi.php";
 include_once "import/excel_reader2.php";

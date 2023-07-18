@@ -8,6 +8,7 @@ include_once "database.php";
 include_once "fungsi.php";
 include_once "mining.php";
 include_once "header.php";
+include_once "footer.php";
 ?>
 <title>Hasil Apriori | Rule Library</title>
 <div class="aprioriProses">

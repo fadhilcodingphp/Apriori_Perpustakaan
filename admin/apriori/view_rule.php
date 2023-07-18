@@ -8,6 +8,7 @@ include_once "fungsi.php";
 include_once "mining.php";
 include_once "display_mining.php";
 include_once "header.php";
+include_once "footer.php";
 ?>
 <div class="aprioriProses">
     <div class="card">
