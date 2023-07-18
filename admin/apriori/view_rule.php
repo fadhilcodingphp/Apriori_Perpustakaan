@@ -258,8 +258,8 @@ include_once "header.php";
                                         foreach ($data_confidence as $key => $val) {
                                             if ($val['lolos'] == 1) {
                                                 echo "<tr>";
-                                                echo "<td>" . $no . ". Jika konsumen membeli " . $val['kombinasi1']
-                                                    . ", maka konsumen juga akan membeli " . $val['kombinasi2'] . "</td>";
+                                                echo "<td>" . $no . ". Jika pengunjung meminjam buku " . $val['kombinasi1']
+                                                    . ", maka pengunjung juga akan meminjam buku " . $val['kombinasi2'] . "</td>";
                                                 echo "</tr>";
                                             }
                                             $no++;
