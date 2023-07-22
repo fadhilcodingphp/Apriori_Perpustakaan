@@ -16,155 +16,91 @@ if ($login == 1) {
 
 include_once "fungsi.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
-    <title>Apriori - Toko Parfum</title>
-    <link href="assets/images/icon/ok.gif" rel="shortcut icon" />
-    <meta name="description" content="overview &amp; stats" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-    <!-- page specific plugin styles -->
-
-    <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
-
-    <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-
-    <!--[if lte IE 9]>
-                <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-        <![endif]-->
-    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
-
-    <!--[if lte IE 9]>
-          <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-        <![endif]-->
-
-    <!-- inline styles related to this page -->
-
-    <!-- ace settings handler -->
-    <script src="assets/js/ace-extra.min.js"></script>
-
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-        <script src="assets/js/html5shiv.min.js"></script>
-        <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
+    <title>Login | Rule Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../../login/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../login/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="../../login/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="../../login/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="../../login/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="../../login/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../login/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="../../login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="../../login/css/login.css">
 </head>
 
-<body class="no-skin">
-    <div class="main-container ace-save-state" id="main-container">
-        <script type="text/javascript">
-            try {
-                ace.settings.loadState('main-container')
-            } catch (e) {}
-        </script>
+<body>
 
-        <!--CONTENT MAIN-->
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="position-relative">
-                    <div id="login-box" class="login-box visible widget-box no-border">
-                        <div class="widget-body">
-                            <div class="widget-main">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post" action="cek-login.php" role="form">
+                    <span class="login100-form-title p-b-20">
+                        <img src="../../login/images/logo.png" alt="Image" height="70" width="70">
+                    </span>
+                    <span class="login100-form-title p-b-26">
+                        Silahkan Login!
+                    </span>
 
-                                <?php
-                                if (isset($komen)) {
-                                    display_error("Login failed");
-                                }
-                                ?>
-                                <div class="col-sm-6">
-                                    <h4 class="header blue lighter bigger">
-                                        <i class="ace-icon fa fa-key"></i>
-                                        Login Form
-                                    </h4>
-                                    <form method="post" action="cek-login.php">
-                                        <fieldset>
-                                            <label class="block clearfix">
-                                                <span class="block input-icon input-icon-right">
-                                                    <input type="text" class="form-control" name="username" placeholder="Username" />
-                                                    <i class="ace-icon fa fa-user"></i>
-                                                </span>
-                                            </label>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="username" id="username" required>
+                        <span class="focus-input100" data-placeholder="Username"></span>
+                    </div>
 
-                                            <label class="block clearfix">
-                                                <span class="block input-icon input-icon-right">
-                                                    <input type="password" class="form-control" name="password" placeholder="Password" />
-                                                    <i class="ace-icon fa fa-lock"></i>
-                                                </span>
-                                            </label>
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" type="password" name="password" id="password" required>
+                        <span class="focus-input100" data-placeholder="Password"></span>
+                    </div>
+                    <?php if (isset($error)) : ?>
+                        <p class="text-danger">Username/Password tidak sesuai</p>
+                    <?php endif; ?>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit" name="login">
+                                Login
+                            </button>
+                        </div>
+                    </div>
 
-                                            <div class="space"></div>
+                    <div class="text-center p-t-20">
+                        <span class="txt1">
+                            Belum Punya Akun?
+                        </span>
 
-                                            <div class="clearfix">
-
-                                                <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                                                    <i class="ace-icon fa fa-key"></i>
-                                                    <span class="bigger-110">Login</span>
-                                                </button>
-                                            </div>
-
-                                            <div class="space-4"></div>
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                            </div><!-- /.widget-main -->
-                        </div><!-- /.widget-body -->
-                    </div><!-- /.login-box -->
-                </div><!-- /.position-relative -->
+                        <a class="txt2" href="../registrasi/index.php">
+                            Klik Disini!
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <a class="navbar-brand" href="#">Copyright @Muhammad Fadhil AY</a>
+    </nav>
 
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-        </a>
-    </div><!-- /.main-container -->
+    <div id="dropDownSelect1"></div>
 
-    <!-- basic scripts -->
-
-    <!--[if !IE]> -->
-    <script src="assets/js/jquery-2.1.4.min.js"></script>
-
-    <!-- <![endif]-->
-
-    <!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
-    <script type="text/javascript">
-        if ('ontouchstart' in document.documentElement)
-            document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-    </script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- page specific plugin scripts -->
-
-    <!--[if lte IE 8]>
-          <script src="assets/js/excanvas.min.js"></script>
-        <![endif]-->
-    <script src="assets/js/jquery-ui.custom.min.js"></script>
-    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="assets/js/jquery.easypiechart.min.js"></script>
-    <script src="assets/js/jquery.sparkline.index.min.js"></script>
-    <script src="assets/js/jquery.flot.min.js"></script>
-    <script src="assets/js/jquery.flot.pie.min.js"></script>
-    <script src="assets/js/jquery.flot.resize.min.js"></script>
-
-    <!-- ace scripts -->
-    <script src="assets/js/ace-elements.min.js"></script>
-    <script src="assets/js/ace.min.js"></script>
-
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 
