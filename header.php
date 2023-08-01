@@ -50,56 +50,11 @@ if (!isset($_SESSION['rolesiswa'])) {
                             <a href="#">Daftar Buku</a>
                             <ul class="dropdown">
                                 <li><a href="bk_recomended.php">Buku Recomended</a></li>
-                                <li><a href="#">Buku Agama</a></li>
-                                <li><a href="#">Buku Pengetahuan Umum</a></li>
-                                <li><a href="#">Buku Cerita</a></li>
-                                <li class="has-children">
-                                    <a href="#">TKJ</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Kelas 1</a></li>
-                                        <li><a href="#">Kelas 2</a></li>
-                                        <li><a href="#">Kelas 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="../buku/tkr.php">TKR</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Kelas 1</a></li>
-                                        <li><a href="#">Kelas 2</a></li>
-                                        <li><a href="#">Kelas 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="../buku/tsm.php">TSM</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Kelas 1</a></li>
-                                        <li><a href="#">Kelas 2</a></li>
-                                        <li><a href="#">Kelas 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="../buku/tav.php">TAV</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Kelas 1</a></li>
-                                        <li><a href="#">Kelas 2</a></li>
-                                        <li><a href="#">Kelas 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">RPL</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Kelas 1</a></li>
-                                        <li><a href="#">Kelas 2</a></li>
-                                        <li><a href="#">Kelas 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">MULTIMEDIA</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Kelas 1</a></li>
-                                        <li><a href="#">Kelas 2</a></li>
-                                        <li><a href="#">Kelas 3</a></li>
-                                    </ul>
+                                <li>
+                                    <?php $ambil = mysqli_query($koneksi, "SELECT * FROM kategoribuku ORDER BY nama_kategori"); ?>
+                                    <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                                        <a href="daftarbuku.php?id=<?= $pecah['id_kategori']; ?>"><?= $pecah['nama_kategori']; ?></a>
+                                    <?php } ?>
                                 </li>
                             </ul>
                         </li>
