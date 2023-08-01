@@ -2,59 +2,41 @@
 include 'header.php';
 ?>
 <title>Buku Recommended | Rule Library</title>
-
-<div class="tabel">
-    <div class="tombol">
-        <div class="input-group mb-3">
-            <div class="search">
-                <div class="input-group-append">
-                    <input type="text" class="form-control" ; placeholder="Masukkan Keyword Pencarian">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+        <?php
+        // $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE buku.id_kategori = '$id' ORDER BY judul_buku");
+        ?>
+        <?php
+        // while ($pecah = mysqli_fetch_assoc($ambil)) { 
+        ?>
+        <span class="card ml-3 mt-3" style="width: 16rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <span class="card-body">
+                <h5 class="card-title">
+                    Buku Recommended
+                </h5>
+            </span>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Jumlah</h6>
+                    </div>
+                    <div class="col-sm-5 text-secondary">
+                        : 10 buku
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <h6 class="mb-0">Letak Buku</h6>
+                    </div>
+                    <div class="col-sm-5 text-secondary">
+                        : Recom
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <table class="table">
-        <div class="thead">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Gambar Buku</th>
-                    <th scope="col">Judul Buku</th>
-                    <th scope="col">Jumlah Buku</th>
-                    <th scope="col">Aksi</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <a class="btn btn-primary" href="#" role="button">Edit</a>&nbsp;
-                        <a class="btn btn-danger" href="#" role="button">Hapus</a>
-                    </td>
-                </tr>
-            </tbody>
-        </div>
-    </table>
-    <div class="pagination">
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">2</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+        </span>
     </div>
 </div>
 <?php

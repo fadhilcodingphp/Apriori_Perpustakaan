@@ -2,7 +2,14 @@
 include 'header.php';
 ?>
 <title>Dashboard | Rule Library</title>
-<div class="card-deck col-10">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mb-3" style="margin-top: 100px;">
+            Selamat datang, Muhammad Fadhil AY
+        </div>
+    </div>
+</div>
+<div class="card-deck col-10" style="margin-top: -1px;">
     <div class="card">
         <img src="assets/images/background1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -12,7 +19,7 @@ include 'header.php';
                 ?>
                 Jumlah Judul : <b><?= $count1; ?></b> buku</h5>
             <p class="card-text">Tersedia berbagai macam judul buku</p>
-            <a href="buku.php">Selengkapnya>>></a>
+            <a href="daftarbuku.php?id=PSNL007">Selengkapnya>>></a>
         </div>
     </div>
     <div class="card">

@@ -58,7 +58,9 @@ if (!isset($_SESSION['rolesiswa'])) {
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="profile.php">Profile</a></li>
+                        <li>
+                            <a href="profile.php">Profile</a>
+                        </li>
                         <li><a href="#">Settings</a></li>
                     </ul>
                 </nav>

@@ -8,7 +8,7 @@ require 'header.php';
             <div class="d-flex flex-column align-items-center text-center">
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="110">
                 <div class="mt-1">
-                    <h4>John Doe</h4>
+                    <h4><?= $ubah['nama']; ?></h4>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@ require 'header.php';
                             <h6 class="mb-0">Username</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            Kenneth Valdez
+                            : <?= $ubah['username']; ?>
                         </div>
                     </div>
                     <hr>
@@ -29,7 +29,7 @@ require 'header.php';
                             <h6 class="mb-0">Nama Lengkap</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            fip@jukmuh.al
+                            : <?= $ubah['nama']; ?>
                         </div>
                     </div>
                     <hr>
@@ -38,13 +38,13 @@ require 'header.php';
                             <h6 class="mb-0">Kelas</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            (239) 816-9029
+                            : <?= $ubah['kelas']; ?>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-12">
-                            <a class="btn btn-info" href="profileUbah.php">Edit</a>
+                            <a class="btn btn-info" href="profileUbah.php?id=<?= $ubah['id_user']; ?>">Edit</a>
                         </div>
                     </div>
                 </div>
