@@ -12,7 +12,7 @@ $ubah = query("SELECT * FROM kategoribuku WHERE id_kategori = '$id'")[0];
         ?>
         <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
             <span class="card ml-3 mt-3" style="width: 16rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img width="150px" src="assets/img/<?php echo $pecah['gambar']; ?>" alt="Gambar Belum Diupload">
                 <span class="card-body">
                     <h5 class="card-title"><?= $pecah['judul_buku']; ?></h5>
                 </span>

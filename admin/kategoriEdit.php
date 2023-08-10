@@ -39,7 +39,7 @@ $ubah = query("SELECT * FROM kategoribuku WHERE id_kategori = '$id'")[0];
                                 <h6 class="mb-0">ID Kategori</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" name="id_kategori" class="form-control" id="id_kategori" value="<?= $ubah["id_kategori"] ?>" required>
+                                <input type="text" name="id_kategori" class="form-control" id="id_kategori" value="<?= $ubah["id_kategori"] ?>" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">

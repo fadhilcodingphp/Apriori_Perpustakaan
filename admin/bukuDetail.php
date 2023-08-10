@@ -16,7 +16,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                 <div class="col">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="110">
+                            <img src="../assets/img/<?php echo $ambildata['gambar']; ?>" alt="Gambar Belum Diupload" width="130">
                         </div>
                     </div>
                 </div>
@@ -29,6 +29,15 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <?php echo $ambildata["id_kategori"] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">ID Buku</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <?php echo $ambildata["id_buku"] ?>
                                 </div>
                             </div>
                             <hr>

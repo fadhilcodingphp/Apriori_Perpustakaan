@@ -26,11 +26,20 @@ if (isset($_POST["submit"])) {
             <div class="addkategori">
                 <form method="post">
                     <div class="mb-3">
-                        <label for="id_rak" class="form-label">ID Rak</label>
-                        <input type="text" class="form-control" name="id_rak">
+                        <label for="exampleInputPassword1" class="form-label">ID Rak*</label>
+                        <?php
+                        $query = mysqli_query($koneksi, "SELECT max(id_rak) as kodeTerbesar FROM rakbuku");
+                        $data = mysqli_fetch_array($query);
+                        $kodeBarang = $data['kodeTerbesar'];
+                        $urutan = (int) substr($kodeBarang, 3, 3);
+                        $urutan++;
+                        $huruf = "RBK";
+                        $kodeBarang = $huruf . sprintf("%03s", $urutan);
+                        ?>
+                        <input type="text" name="id_rak" class="form-control" id="id_rak" value="<?php echo $kodeBarang; ?>" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="nama_rak" class="form-label">Nama Rak</label>
+                        <label for="nama_rak" class="form-label">Nama Rak*</label>
                         <input type="text" class="form-control" name="nama_rak">
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Tambah Rak</button>

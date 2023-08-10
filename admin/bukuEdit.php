@@ -35,7 +35,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                 <div class="col">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                            <img src="../assets/img/<?php echo $ambildata['gambar']; ?>" alt="Gambar Belum Diupload" width="130">
                         </div>
                     </div>
                 </div>
@@ -61,6 +61,14 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
+                                        <h6 class="mb-0">ID Buku</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="id_buku" id="id_buku" class="form-control" value="<?php echo $ambildata["id_buku"] ?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
                                         <h6 class="mb-0">Judul Buku</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
@@ -73,6 +81,22 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <input type="text" name="jumlah_buku" id="jumlah_buku" class="form-control" value="<?php echo $ambildata["jumlah_buku"] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">ID Rak</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <select class="form-select" aria-label="Default select example" name="id_rak">
+                                            <option selected><?= $ambildata['id_rak'] ?></option>
+                                            <?php
+                                            $ambil = mysqli_query($koneksi, "SELECT * FROM rakbuku");
+                                            while ($pecah = mysqli_fetch_assoc($ambil)) {
+                                                echo "<option value=$pecah[id_rak]> $pecah[nama_rak]</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">

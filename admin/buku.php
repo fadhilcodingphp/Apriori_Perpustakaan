@@ -102,7 +102,7 @@ $ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku
                         <td><?php echo $row["id_kategori"] ?></td>
                         <td><?php echo $row["judul_buku"] ?></td>
                         <td><?php echo $row["jumlah_buku"] ?></td>
-                        <td>Belum ada gambar</td>
+                        <td><img width="150px" src="../assets/img/<?php echo $row['gambar']; ?>" alt="Gambar Belum Diupload"></td>
                         <td>
                             <a class="btn btn-primary" href="bukuDetail.php?id=<?= $row['id_buku']; ?>" role="button">Detail</a>&nbsp;
                             <a class="btn btn-danger" href="bukuEdit.php?id=<?= $row['id_buku']; ?>" role="button">Edit</a>

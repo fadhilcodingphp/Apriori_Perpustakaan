@@ -14,6 +14,38 @@ function query($query)
     return $rows;
 }
 
+function uploadGambar()
+{
+    $gambarProduk = $_FILES['Gambar']['name'];
+    $ukuranGambar = $_FILES['Gambar']['size'];
+    $error = $_FILES['Gambar']['error'];
+    $tmpProduk = $_FILES['Gambar']['tmp_name'];
+    //cek apakah tidak ada gambar yang diupload
+    if ($error === 4) {
+        echo "<script> alert('Gambar Belum Diupload'); </script>";
+        return $gambarProduk;
+    }
+    //cek apakah yang diupload gambar
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png', ''];
+    $ekstensiGambar = explode('.', $gambarProduk);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "<script> alert('Yang anda upload bukan gambar'); </script>";
+        return false;
+    }
+    //cek jika ukurannya terlalu besar
+    if ($ukuranGambar > 5000000) {
+        echo "<script> alert('Ukuran gambar terlalu besar'); </script>";
+        return false;
+    }
+    //lolos pengecekan, generate nama baru
+    $gambarBaru = uniqid();
+    $gambarBaru .= '.';
+    $gambarBaru .= $ekstensiGambar;
+    move_uploaded_file($tmpProduk, '../assets/img/' . $gambarBaru);
+    return $gambarBaru;
+}
+
 function hapus()
 {
     global $koneksi;
@@ -149,12 +181,18 @@ function tambahBuku($Buku)
     global $koneksi;
     //ambil data dari tiap elemen form
     $id_kategori = htmlspecialchars($Buku["id_kategori"]);
+    $id_rak = htmlspecialchars($Buku["id_rak"]);
     $id_buku = htmlspecialchars($Buku["id_buku"]);
     $judul_buku = htmlspecialchars($Buku["judul_buku"]);
     $jumlah_buku = htmlspecialchars($Buku["jumlah_buku"]);
 
+    $Gambar = uploadGambar();
+    if (!$Gambar) {
+        return false;
+    }
+
     //query insert data
-    $inputProduk = "INSERT INTO buku VALUES ('$id_buku', '$id_kategori','$judul_buku', '$jumlah_buku', '')";
+    $inputProduk = "INSERT INTO buku VALUES ('$id_buku', '$id_kategori', '$judul_buku', '$jumlah_buku', '$Gambar', '$id_rak')";
     mysqli_query($koneksi, $inputProduk);
 
     return mysqli_affected_rows($koneksi);
