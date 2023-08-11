@@ -31,7 +31,7 @@ if (isset($_POST["submit"])) {
                             <select class="form-control" aria-label="Default select example" name="id_kategori">
                                 <option selected>---</option>
                                 <?php
-                                $ambil = mysqli_query($koneksi, "SELECT * FROM kategoribuku");
+                                $ambil = mysqli_query($koneksi, "SELECT * FROM kategoribuku ORDER BY nama_kategori");
                                 while ($pecah = mysqli_fetch_assoc($ambil)) {
                                     echo "<option value=$pecah[id_kategori]> $pecah[nama_kategori]</option>";
                                 }

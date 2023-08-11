@@ -1,15 +1,19 @@
 <?php
 include 'header.php';
+
+
 ?>
 <title>Dashboard | Rule Library</title>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 mb-3" style="margin-top: 100px;">
-            Selamat datang, Muhammad Fadhil AY
+            <h2>
+                Selamat datang, <?= $_SESSION["rolesiswa"]; ?>
+            </h2>
         </div>
     </div>
 </div>
-<div class="card-deck col-10" style="margin-top: -1px;">
+<div class="card-deck col-7" style="margin-top: -10px;">
     <div class="card">
         <img src="assets/images/background1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -33,18 +37,8 @@ include 'header.php';
             <p class="card-text">User yang telah terdaftar dalam sistem</p>
         </div>
     </div>
-    <div class="card">
-        <img src="assets/images/background1.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">
-                <?php $get1 = mysqli_query($koneksi, "SELECT*FROM riwayatpinjam");
-                $count1 = mysqli_num_rows($get1);
-                ?>
-                Transaksi : <b><?= $count1; ?></b> peminjaman</h5>
-            <p class="card-text">Total transaki peminjaman buku</p>
-        </div>
-    </div>
 </div>
+<br><br>
 <?php
 include 'footer.php';
 ?>

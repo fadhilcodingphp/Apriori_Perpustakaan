@@ -30,7 +30,7 @@ if ($halamanAktif < ($jumlahPagination - $jumlahLink)) {
 }
 //end
 
-$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori LIMIT $dataAwal, $jumlahData");
+$ambildata_perhalaman = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori ORDER BY id_buku DESC LIMIT $dataAwal, $jumlahData");
 
 ?>
 <title>Daftar Buku| Rule Library</title>

@@ -69,6 +69,15 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                             </div>
                             <hr>
                             <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Letak Buku</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <?php echo $ambildata["id_rak"] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
                                 <div class="col-sm-12">
                                     <a class="btn btn-info" href="bukuEdit.php?id=<?= $ambildata['id_buku']; ?>">Edit</a>
                                 </div>

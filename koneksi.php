@@ -67,11 +67,11 @@ if (isset($_POST['login'])) {
 
         if ($role == 'admin') {
             $_SESSION['log'] = 'Logged';
-            $_SESSION['roleadmin'] = 'Admin';
+            $_SESSION['roleadmin'] = $username;
             header('location:../admin/index.php');
         } else {
             $_SESSION['log'] = 'Logged';
-            $_SESSION['rolesiswa'] = 'Siswa';
+            $_SESSION['rolesiswa'] = $username;
             header('location:../dashboard.php');
         }
     } else {

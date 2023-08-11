@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
 //ambil data di URL
 $id = $_GET["id"];
 // query data mhs berdasarkan id
-$ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND buku.id_kategori = kategoribuku.id_kategori")[0];
+$ambildata = query("SELECT * FROM buku, kategoribuku, rakbuku WHERE id_buku = '$id' AND buku.id_rak = rakbuku.id_rak, buku.id_kategori = kategoribuku.id_kategori")[0];
 ?>
 <title>Edit Buku | Rule Library</title>
 <div class="editbook">
@@ -49,11 +49,11 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                     </div>
                                     <div class="col-sm-9 text-secondary">
                                         <select class="form-select" aria-label="Default select example" name="id_kategori">
-                                            <option selected><?= $ambildata['nama_kategori'] ?></option>
+                                            <option selected><?= $ambildata['id_kategori'] ?></option>
                                             <?php
                                             $ambil = mysqli_query($koneksi, "SELECT * FROM kategoribuku");
                                             while ($pecah = mysqli_fetch_assoc($ambil)) {
-                                                echo "<option value=$pecah[id_kategori]> $pecah[nama_kategori]</option>";
+                                                echo "<option value=$pecah[id_kategori]> $pecah[id_kategori]</option>";
                                             }
                                             ?>
                                         </select>
@@ -93,7 +93,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                             <?php
                                             $ambil = mysqli_query($koneksi, "SELECT * FROM rakbuku");
                                             while ($pecah = mysqli_fetch_assoc($ambil)) {
-                                                echo "<option value=$pecah[id_rak]> $pecah[nama_rak]</option>";
+                                                echo "<option value=$pecah[id_rak]> $pecah[id_rak]</option>";
                                             }
                                             ?>
                                         </select>

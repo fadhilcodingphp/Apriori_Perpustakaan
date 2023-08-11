@@ -49,7 +49,6 @@ if (!isset($_SESSION['rolesiswa'])) {
                         <li class="has-children">
                             <a href="#">Daftar Buku</a>
                             <ul class="dropdown">
-                                <li><a href="bk_recomended.php">Buku Recomended</a></li>
                                 <li>
                                     <?php $ambil = mysqli_query($koneksi, "SELECT * FROM kategoribuku ORDER BY nama_kategori"); ?>
                                     <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
