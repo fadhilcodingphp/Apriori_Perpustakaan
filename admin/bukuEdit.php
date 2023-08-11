@@ -23,7 +23,10 @@ if (isset($_POST["submit"])) {
 //ambil data di URL
 $id = $_GET["id"];
 // query data mhs berdasarkan id
-$ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND buku.id_kategori = kategoribuku.id_kategori")[0];
+$ambildata = query("SELECT * FROM buku
+                                     INNER JOIN kategoribuku ON buku.id_kategori = kategoribuku.id_kategori 
+                                     INNER JOIN rakbuku ON buku.id_rak = rakbuku.id_rak 
+                                     WHERE buku.id_buku = '$id'")[0];
 ?>
 <title>Edit Buku | Rule Library</title>
 <div class="editbook">
