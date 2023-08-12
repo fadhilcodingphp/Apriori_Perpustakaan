@@ -218,3 +218,41 @@ function ubahBuku($produk)
     mysqli_query($koneksi, $ubahproduk);
     return mysqli_affected_rows($koneksi);
 }
+
+//riwayatpinjam
+function tambahPeminjam($data)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_pinjam = htmlspecialchars($data["id_pinjam"]);
+    $nama_peminjam = htmlspecialchars($data["nama_peminjam"]);
+    $kelas_peminjam = htmlspecialchars($data["kelas_peminjam"]);
+    $judul_buku = htmlspecialchars($data["judul_buku"]);
+
+    //query insert data
+    $addpinjam = "INSERT INTO riwayatpinjam VALUES ('$id_pinjam', '$nama_peminjam', '$kelas_peminjam', '$judul_buku', NOW(), '')";
+    mysqli_query($koneksi, $addpinjam);
+    return mysqli_affected_rows($koneksi);
+}
+
+function ubahPinjam($pinjam)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $id_pinjam = htmlspecialchars($pinjam["id_pinjam"]);
+    $nama_peminjam = htmlspecialchars($pinjam["nama_peminjam"]);
+    $kelas_peminjam = htmlspecialchars($pinjam["kelas_peminjam"]);
+    $judul_buku = htmlspecialchars($pinjam["judul_buku"]);
+    $tgl_kembali = htmlspecialchars($pinjam["tgl_kembali"]);
+
+    //query ubah data
+    $ubahpinjam = "UPDATE riwayatpinjam SET
+                    id_pinjam = '$id_pinjam',
+                    nama_peminjam = '$nama_peminjam',
+                    kelas_peminjam = '$kelas_peminjam',
+                    judul_buku = '$judul_buku',
+                    tgl_kembali = '$tgl_kembali'
+                    WHERE id_pinjam = '$id_pinjam'";
+    mysqli_query($koneksi, $ubahpinjam);
+    return mysqli_affected_rows($koneksi);
+}

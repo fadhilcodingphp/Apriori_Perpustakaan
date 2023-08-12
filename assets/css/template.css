@@ -85,67 +85,6 @@ body {
         padding: 20px;
     }
     
-    .paginationriwayat{
-        margin: 0 auto;
-        margin-right: 20px;
-        margin-bottom: 20px;
-        padding: 5px;
-        font-size: 17px;
-        float: right;
-    }
-
-    .previous:hover{
-      background-color: rgb(189, 225, 248);
-    }
-    
-    .next:hover{
-      background-color: rgb(189, 225, 248);
-    }
-    
-    .angkapagination:hover{
-      background-color: rgb(189, 225, 248);
-    }
-
-    .angkapagination{
-      border-style: solid;
-      border-width: 1px;
-      border-color: rgb(108, 187, 240);
-      padding: 3px;
-    }
-    
-    .previous{
-    border-style: solid;
-    border-right: none;
-    border-width: 1px;
-    border-color: rgb(108, 187, 240);
-    width: 100%;
-    padding: 3px;
-    padding-left: 15px;
-    padding-right: 15px;
-    }    
-    
-    .isipagination{
-    border-style: solid;
-    border-width: 1px;
-    border-top: none;
-    border-bottom: none;
-    border-color: rgb(108, 187, 240);
-    width: 100%;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    }    
-    
-    .next{
-    border-style: solid;
-    border-left: none;
-    border-width: 1px;
-    border-color: rgb(108, 187, 240);
-    width: 100%;
-    padding: 3px;
-    padding-left: 15px;
-    padding-right: 15px;
-    }    
-
    .input-group-append{
         margin-left: 630px;
     }
@@ -198,6 +137,11 @@ body {
 
   .isiproses{
     padding: 10px;
+  }
+
+  .navadmin{
+    margin-left: 100px;
+    margin-top: -63px;
   }
 
   p {

@@ -49,12 +49,12 @@ if (!isset($_SESSION['roleadmin'])) {
                         <li class="has-children">
                             <a href="">Buku</a>
                             <ul class="dropdown">
-                                <li><a href="rak.php">Rak Buku</a></li>
-                                <li><a href="kategori.php">Kategori Buku</a></li>
-                                <li><a href="buku.php">Daftar Buku</a></li>
+                                <li><a href="rak1.php">Rak Buku</a></li>
+                                <li><a href="kategori1.php">Kategori Buku</a></li>
+                                <li><a href="buku1.php">Daftar Buku</a></li>
                             </ul>
                         </li>
-                        <li><a href="riwayatpinjam.php">Riwayat Peminjaman</a></li>
+                        <li><a href="riwayatpinjam1.php">Riwayat Peminjaman</a></li>
                         <li class="has-children">
                             <a href="">Proses Data</a>
                             <ul class="dropdown">
