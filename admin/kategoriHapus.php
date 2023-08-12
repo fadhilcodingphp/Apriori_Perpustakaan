@@ -6,7 +6,7 @@ if (hapus() > 0) {
     echo "
         <script>
         alert('data berhasil dihapus');
-        document.location.href='kategori.php';
+        document.location.href='kategori1.php';
         </script>
         ";
 } else {

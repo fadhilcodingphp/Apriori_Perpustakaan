@@ -1,15 +1,16 @@
 <?php
-include 'header.php';
-
-
+require 'header.php';
+$id = $_SESSION["rolesiswa"];
+// query data mhs berdasarkan id
+$ubah = query("SELECT * FROM users WHERE username = '$id'")[0];
 ?>
 <title>Dashboard | Rule Library</title>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 mb-3" style="margin-top: 100px;">
-            <h2>
-                Selamat datang, <?= $_SESSION["rolesiswa"]; ?>
-            </h2>
+            <h4>
+                Selamat datang, <b><?= $ubah['nama']; ?></b>
+            </h4>
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ if (hapus() > 0) {
     echo "
         <script>
         alert('data berhasil dihapus');
-        document.location.href='buku.php';
+        document.location.href='buku1.php';
         </script>
         ";
 } else {

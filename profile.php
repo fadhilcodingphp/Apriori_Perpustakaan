@@ -1,9 +1,12 @@
 <?php
 require 'header.php';
+$id = $_SESSION["rolesiswa"];
+// query data mhs berdasarkan id
+$ubah = query("SELECT * FROM users WHERE username = '$id'")[0];
 ?>
 <title>Profile | Rule Library</title>
 <div class="profile">
-    <div class="card">
+    <div class="card" style="margin-bottom: 90px;">
         <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="110">
@@ -39,6 +42,15 @@ require 'header.php';
                         </div>
                         <div class="col-sm-9 text-secondary">
                             : <?= $ubah['kelas']; ?>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Status</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            : <?= $ubah['role']; ?>
                         </div>
                     </div>
                     <hr>

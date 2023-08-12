@@ -8,7 +8,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
 ?>
 <title>Detail Buku | Rule Library</title>
 <div class="editbook">
-    <div class="card mt-3">
+    <div class="card mt-3" style="margin-bottom: 90px;">
         <div class="isiEdit">
             <h2 class="mt-3">Detail Buku</h2>
             <hr>
@@ -16,7 +16,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                 <div class="col">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="../assets/img/<?php echo $ambildata['gambar']; ?>" alt="Gambar Belum Diupload" width="130">
+                            <img src="../assets/img/<?php echo $ambildata['Gambar']; ?>" alt="Gambar Belum Diupload" width="130">
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
     if (tambahRak($_POST) > 0) {
         echo "
          <script>
-         document.location.href='rak.php';
+         document.location.href='rak1.php';
          </script>
          ";
     } else {

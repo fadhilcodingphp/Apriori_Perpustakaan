@@ -7,8 +7,7 @@ if (isset($_POST["submit"])) {
     if (ubahBuku($_POST) > 0) {
         echo "
         <script>
-        alert('Data berhasil diubah');
-        document.location.href='buku.php';
+        document.location.href='buku1.php';
         </script>
         ";
     } else {
@@ -38,7 +37,7 @@ $ambildata = query("SELECT * FROM buku
                 <div class="col">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="../assets/img/<?php echo $ambildata['gambar']; ?>" alt="Gambar Belum Diupload" width="130">
+                            <img src="../assets/img/<?php echo $ambildata['Gambar']; ?>" alt="Gambar Belum Diupload" width="130">
                         </div>
                     </div>
                 </div>

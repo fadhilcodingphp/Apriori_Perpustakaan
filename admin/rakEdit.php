@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
         echo "
         <script>
         alert('Data berhasil diubah');
-        document.location.href='rak.php';
+        document.location.href='rak1.php';
         </script>
         ";
     } else {

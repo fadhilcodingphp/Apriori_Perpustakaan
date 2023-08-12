@@ -5,14 +5,27 @@ $id = $_GET["id"];
 $ubah = query("SELECT * FROM kategoribuku WHERE id_kategori = '$id'")[0];
 ?>
 <title><?= $ubah['nama_kategori']; ?> | Rule Library</title>
-<div class="container" style="margin-top: 100px;">
+<div class="card" style="padding: 30px; width: 1200px; margin: 0 auto; margin-top: 100px; border-radius: 20px;">
+    <h4 style="font-weight: 800;">
+        Daftar <?= $ubah['nama_kategori']; ?>
+    </h4>
+    <hr>
+    <form class="d-flex col-4" style="margin-left: 710px;" action="" method="POST">
+        <input class="form-control me-2" type="search" placeholder="Cari Buku" aria-label="Search" name="keyword" autocomplete="off">
+        <button class="btn btn-outline-danger" type="submit" name="cari">Search</button>
+    </form>
     <div class="row">
         <?php
-        $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE buku.id_kategori = '$id' ORDER BY judul_buku");
+        if (isset($_POST["cari"])) {
+            $keyword = $_POST["keyword"];
+            $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE judul_buku LIKE '%$keyword%' AND id_kategori LIKE '%$id%'");
+        } else {
+            $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE buku.id_kategori = '$id'");
+        }
         ?>
         <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
             <span class="card ml-3 mt-3" style="width: 16rem;">
-                <img width="150px" src="assets/img/<?php echo $pecah['gambar']; ?>" alt="Gambar Belum Diupload">
+                <img style="margin: 0 auto; padding-top: 10px;" width="150px" src="assets/img/<?php echo $pecah['Gambar']; ?>" alt="Gambar Belum Diupload">
                 <span class="card-body">
                     <h5 class="card-title"><?= $pecah['judul_buku']; ?></h5>
                 </span>

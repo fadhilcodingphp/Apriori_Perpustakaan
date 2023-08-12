@@ -6,7 +6,7 @@ if (isset($_POST["submit"])) {
     if (tambahBuku($_POST) > 0) {
         echo "
         <script>
-        document.location.href='buku.php';
+        document.location.href='bukuTambah.php';
         </script>
         ";
     } else {
@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
 ?>
 <title>Tambah Buku | Rule Library</title>
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-bottom: 90px;">
         <div class="col">
             <div class="addbook">
                 <form action="" method="post" enctype="multipart/form-data">

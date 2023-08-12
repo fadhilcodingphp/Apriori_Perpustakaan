@@ -49,10 +49,10 @@ if (!isset($_SESSION['rolesiswa'])) {
                         <li class="has-children">
                             <a href="#">Daftar Buku</a>
                             <ul class="dropdown">
-                                <li>
+                                <li style="font-size: 13px;">
                                     <?php $ambil = mysqli_query($koneksi, "SELECT * FROM kategoribuku ORDER BY nama_kategori"); ?>
                                     <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
-                                        <a href="daftarbuku.php?id=<?= $pecah['id_kategori']; ?>"><?= $pecah['nama_kategori']; ?></a>
+                                        <a href="daftarbuku.php?id=<?= $pecah['id_kategori']; ?>" style="margin-bottom: -7px;"><?= $pecah['nama_kategori']; ?></a>
                                     <?php } ?>
                                 </li>
                             </ul>
@@ -60,7 +60,6 @@ if (!isset($_SESSION['rolesiswa'])) {
                         <li>
                             <a href="profile.php">Profile</a>
                         </li>
-                        <li><a href="#">Settings</a></li>
                     </ul>
                 </nav>
 

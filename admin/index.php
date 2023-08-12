@@ -13,7 +13,7 @@ include 'header.php';
                 ?>
                 Jumlah Judul : <b><?= $count1; ?></b> buku</h5>
             <p class="card-text">Tersedia berbagai macam judul buku</p>
-            <a href="buku.php">Selengkapnya>>></a>
+            <a href="buku1.php">Selengkapnya>>></a>
         </div>
     </div>
     <div class="card">
@@ -36,7 +36,7 @@ include 'header.php';
                 ?>
                 Transaksi : <b><?= $count1; ?></b> peminjaman</h5>
             <p class="card-text">Total transaki peminjaman buku</p>
-            <a href="riwayatpinjam.php">Selengkapnya>>></a>
+            <a href="riwayatpinjam1.php">Selengkapnya>>></a>
         </div>
     </div>
 </div>

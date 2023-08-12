@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
     if (tambahKategori($_POST) > 0) {
         echo "
          <script>
-         document.location.href='kategori.php';
+         document.location.href='kategori1.php';
          </script>
          ";
     } else {

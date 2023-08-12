@@ -42,7 +42,7 @@
                 <?php
                 // include '../koneksi.php';
                 $no = 0;
-                $ambildata = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori");
+                $ambildata = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori ORDER BY id_buku DESC");
                 ?>
                 <?php
                 while ($row = mysqli_fetch_assoc($ambildata)) {
@@ -53,7 +53,7 @@
                         <td><?php echo $row["id_kategori"] ?></td>
                         <td><?php echo $row["judul_buku"] ?></td>
                         <td><?php echo $row["jumlah_buku"] ?></td>
-                        <td><img width="150px" src="../assets/img/<?php echo $row['gambar']; ?>" alt="Gambar Belum Diupload"></td>
+                        <td><img width="150px" src="../assets/img/<?php echo $row['Gambar']; ?>" alt="Gambar Belum Diupload"></td>
                         <td class="col-3">
                             <a class="btn btn-primary" href="bukuDetail.php?id=<?= $row['id_buku']; ?>" role="button">Detail</a>&nbsp;
                             <a class="btn btn-danger" href="bukuEdit.php?id=<?= $row['id_buku']; ?>" role="button">Edit</a>

@@ -183,7 +183,7 @@ function tambahBuku($Buku)
     $id_kategori = htmlspecialchars($Buku["id_kategori"]);
     $id_rak = htmlspecialchars($Buku["id_rak"]);
     $id_buku = htmlspecialchars($Buku["id_buku"]);
-    $judul_buku = htmlspecialchars($Buku["judul_buku"]);
+    $judul_buku = addslashes($Buku["judul_buku"]);
     $jumlah_buku = htmlspecialchars($Buku["jumlah_buku"]);
 
     $Gambar = uploadGambar();
@@ -205,7 +205,7 @@ function ubahBuku($produk)
     $id_buku = htmlspecialchars($produk["id_buku"]);
     $id_kategori = htmlspecialchars($produk["id_kategori"]);
     $id_rak = htmlspecialchars($produk["id_rak"]);
-    $judul_buku = htmlspecialchars($produk["judul_buku"]);
+    $judul_buku = addslashes($produk["judul_buku"]);
     $jumlah_buku = htmlspecialchars($produk["jumlah_buku"]);
 
     //query ubah data

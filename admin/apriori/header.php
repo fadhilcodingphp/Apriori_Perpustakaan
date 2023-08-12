@@ -55,13 +55,7 @@
                                 <li><a href="index.php?menu=hasil">Hasil Apriori</a></li>
                             </ul>
                         </li>
-                        <li class="has-children">
-                            <a href="../">About</a>
-                            <ul class="dropdown">
-                                <li><a href="../profile.php">Profile</a></li>
-                                <li><a href="#">Settings</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="../profile.php">Profile</a></li>
                     </ul>
                 </nav>
 

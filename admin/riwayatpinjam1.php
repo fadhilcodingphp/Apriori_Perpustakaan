@@ -58,7 +58,7 @@
                         <td><?php echo $row["tgl_pinjam"] ?></td>
                         <td class="col-3">
                             <a class="btn btn-primary" href="riwayatpinjamDetail.php?id=<?= $row['id_pinjam']; ?>" role="button">Detail</a>&nbsp;
-                            <a class="btn btn-success" href="riwayatpinjamEdit.php?id=<?= $row['id_pinjam']; ?>" role="button">Edit</a>
+                            <a class="btn btn-success" href="riwayatpinjamEdit1.php?id=<?= $row['id_pinjam']; ?>" role="button">Edit</a>
                             <a class="btn btn-danger" href="riwayatpinjamHapus.php?id=<?= $row['id_pinjam']; ?>" role="button">Delete</a>
                         </td>
                     </tr>

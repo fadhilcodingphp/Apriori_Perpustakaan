@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
         echo "
         <script>
         alert('Data berhasil diubah');
-        document.location.href='kategori.php';
+        document.location.href='kategori1.php';
         </script>
         ";
     } else {
