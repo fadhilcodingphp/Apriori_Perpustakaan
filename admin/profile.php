@@ -9,7 +9,7 @@ $ubah = query("SELECT * FROM users WHERE username = '$id'")[0];
     <div class="card">
         <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="110">
+                <img src="../assets/img/<?= $ubah['gambar']; ?>" alt="No file picture" class="rounded-circle p-1 bg-primary" width="90">
                 <div class="mt-1">
                     <h4><?= $ubah['nama']; ?></h4>
                 </div>

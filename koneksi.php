@@ -88,6 +88,10 @@ function daftar($daftar)
     $password = mysqli_real_escape_string($koneksi, $daftar["password"]);
     $password2 = mysqli_real_escape_string($koneksi, $daftar["cpassword"]);
     $kelas = mysqli_real_escape_string($koneksi, $daftar["kelas"]);
+    $Gambar = uploadGambar();
+    if (!$Gambar) {
+        return false;
+    }
 
     //cek konfirmasi pessword
     if ($password !== $password2) {
@@ -106,7 +110,7 @@ function daftar($daftar)
     // $password2 = password_hash($password2, PASSWORD_DEFAULT);
 
     //tambah user baru ke database
-    mysqli_query($koneksi, "INSERT INTO users VALUES ('', '$nama', '$username', '$password' , '$password2', '$kelas', 'siswa')");
+    mysqli_query($koneksi, "INSERT INTO users VALUES ('', '$nama', '$username', '$password' , '$password2', '$kelas', '$Gambar', 'siswa')");
     return mysqli_affected_rows($koneksi);
 }
 
@@ -254,5 +258,43 @@ function ubahPinjam($pinjam)
                     tgl_kembali = '$tgl_kembali'
                     WHERE id_pinjam = '$id_pinjam'";
     mysqli_query($koneksi, $ubahpinjam);
+    return mysqli_affected_rows($koneksi);
+}
+
+function ubahProfile($profile)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $username = $_POST["username"];
+    $id_user = $_POST["id_user"];
+    $nama = $_POST["nama"];
+    $kelas = $_POST["kelas"];
+
+    //query ubah data
+    $ubahprofile = "UPDATE users SET
+                    id_user = '$id_user',
+                    username = '$username',
+                    nama = '$nama',
+                    kelas = '$kelas'
+                    WHERE id_user = '$id_user'";
+    mysqli_query($koneksi, $ubahprofile);
+    return mysqli_affected_rows($koneksi);
+}
+
+function ubahProfileAdmin($profile)
+{
+    global $koneksi;
+    //ambil data dari tiap elemen form
+    $username = $_POST["username"];
+    $id_user = $_POST["id_user"];
+    $nama = $_POST["nama"];
+
+    //query ubah data
+    $ubahprofile = "UPDATE users SET
+                    id_user = '$id_user',
+                    username = '$username',
+                    nama = '$nama'
+                    WHERE id_user = '$id_user'";
+    mysqli_query($koneksi, $ubahprofile);
     return mysqli_affected_rows($koneksi);
 }

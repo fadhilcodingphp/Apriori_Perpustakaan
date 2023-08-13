@@ -71,7 +71,7 @@ $ambildata = query("SELECT * FROM riwayatpinjam WHERE id_pinjam = '$id'")[0];
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info" href="riwayatpinjamEdit.php?id=<?= $ambildata['id_pinjam']; ?>">Edit</a>
+                                    <a class="btn btn-info" href="riwayatpinjamEdit1.php?id=<?= $ambildata['id_pinjam']; ?>">Edit</a>
                                 </div>
                             </div>
                         </div>

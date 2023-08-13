@@ -47,7 +47,7 @@ if (isset($_POST["daftar"])) {
             <div class="card card-3">
                 <div class="card-body">
                     <h2 class="title">Registrasi</h2>
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         <div class="input-group">
                             <input class="input--style-3" type="text" placeholder="Nama Lengkap" name="nama">
                         </div>
@@ -85,6 +85,10 @@ if (isset($_POST["daftar"])) {
                         </div>
                         <div class="input-group">
                             <input class="input--style-3" type="password" placeholder="Confirm Password" name="cpassword">
+                        </div>
+                        <div class="input-group">
+                            <span style="color: aliceblue; font-size: 15px;">Masukkan Foto Profile</span>
+                            <input type="file" name="Gambar" class="form-control" id="Gambar">
                         </div>
                         <div class="p-t-3">
                             <button class="btn btn--pill btn--green" type="submit" name="daftar">Daftar</button>

@@ -489,12 +489,12 @@
   }
 
   .hero {
-    height: 100vh;
+    height: 110vh;
     width: 100%;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    margin-top: -625px;
+    margin-top: -680px;
   }
 
   .card-3 {
