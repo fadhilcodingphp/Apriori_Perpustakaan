@@ -42,7 +42,7 @@
                 <?php
                 // include '../koneksi.php';
                 $no = 0;
-                $ambildata = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori ORDER BY id_buku DESC");
+                $ambildata = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori ORDER BY judul_buku ASC");
                 ?>
                 <?php
                 while ($row = mysqli_fetch_assoc($ambildata)) {

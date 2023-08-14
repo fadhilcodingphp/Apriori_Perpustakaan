@@ -18,9 +18,9 @@ $ubah = query("SELECT * FROM kategoribuku WHERE id_kategori = '$id'")[0];
         <?php
         if (isset($_POST["cari"])) {
             $keyword = $_POST["keyword"];
-            $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE judul_buku LIKE '%$keyword%' AND id_kategori LIKE '%$id%'");
+            $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE judul_buku LIKE '%$keyword%' AND id_kategori LIKE '%$id%' ORDER BY judul_buku ASC");
         } else {
-            $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE buku.id_kategori = '$id'");
+            $ambil = mysqli_query($koneksi, "SELECT * FROM buku WHERE buku.id_kategori = '$id' ORDER BY judul_buku ASC");
         }
         ?>
         <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
