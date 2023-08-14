@@ -1,5 +1,5 @@
 <?php
-$koneksi = mysqli_connect("localhost", "root", "", "skripsiku");
+require 'koneksi.php';
 ?>
 <!doctype html>
 <html lang="en">
