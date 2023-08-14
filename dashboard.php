@@ -8,7 +8,7 @@ $ubah = query("SELECT * FROM users WHERE username = '$id'")[0];
 <div class="container">
     <div class="row">
         <div class="col-sm-12 mb-3" style="margin-top: 100px;">
-            <h4>
+            <h4 class="sambutan">
                 Selamat datang, <b><?= $ubah['nama']; ?></b>
             </h4>
         </div>

@@ -17,52 +17,51 @@
     <?php
     include 'headertabel.php';
     ?>
-    <div class="card" style="width: 1200px;
-                                margin : 0 auto;
-                                margin-top: 100px;
-                                margin-bottom: 100px;
-                                padding: 30px;
-                               ">
-        <h3>Daftar Buku</h3>
-        <hr>
-        <a class="btn btn-danger" style="width: 210px;" href="bukuTambah.php" role="button">Tambah Data Buku</a>
-        <hr>
-        <table id="example" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Kategori Buku</th>
-                    <th>Judul Buku</th>
-                    <th>Jumlah Buku</th>
-                    <th>Gambar</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // include '../koneksi.php';
-                $no = 0;
-                $ambildata = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori ORDER BY judul_buku ASC");
-                ?>
-                <?php
-                while ($row = mysqli_fetch_assoc($ambildata)) {
-                    $no++;
-                ?>
-                    <tr>
-                        <td scope="row"><?php echo $no; ?></td>
-                        <td><?php echo $row["id_kategori"] ?></td>
-                        <td><?php echo $row["judul_buku"] ?></td>
-                        <td><?php echo $row["jumlah_buku"] ?></td>
-                        <td><img width="150px" src="../assets/img/<?php echo $row['Gambar']; ?>" alt="Gambar Belum Diupload"></td>
-                        <td class="col-3">
-                            <a class="btn btn-primary" href="bukuDetail.php?id=<?= $row['id_buku']; ?>" role="button">Detail</a>&nbsp;
-                            <a class="btn btn-danger" href="bukuEdit.php?id=<?= $row['id_buku']; ?>" role="button">Edit</a>
-                            <a class="btn btn-dark" href="bukuHapus.php?id=<?= $row['id_buku']; ?>" role="button">Hapus</a>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+    <div class="tabeladmin">
+        <div class="card">
+            <div class="isitabeladmin">
+                <h3>Daftar Buku</h3>
+                <hr>
+                <a class="btn btn-danger" style="width: 210px;" href="bukuTambah.php" role="button">Tambah Data Buku</a>
+                <hr>
+                <table id="example" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kategori Buku</th>
+                            <th>Judul Buku</th>
+                            <th>Jumlah Buku</th>
+                            <th>Gambar</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // include '../koneksi.php';
+                        $no = 0;
+                        $ambildata = mysqli_query($koneksi, "SELECT * FROM buku, kategoribuku WHERE buku.id_kategori = kategoribuku.id_kategori ORDER BY judul_buku ASC");
+                        ?>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($ambildata)) {
+                            $no++;
+                        ?>
+                            <tr>
+                                <td scope="row"><?php echo $no; ?></td>
+                                <td><?php echo $row["id_kategori"] ?></td>
+                                <td><?php echo $row["judul_buku"] ?></td>
+                                <td><?php echo $row["jumlah_buku"] ?></td>
+                                <td><img width="150px" src="../assets/img/<?php echo $row['Gambar']; ?>" alt="Gambar Belum Diupload"></td>
+                                <td class="col-3">
+                                    <a class="btn btn-primary" href="bukuDetail.php?id=<?= $row['id_buku']; ?>" role="button">Detail</a>&nbsp;
+                                    <a class="btn btn-danger" href="bukuEdit.php?id=<?= $row['id_buku']; ?>" role="button">Edit</a>
+                                    <a class="btn btn-dark" href="bukuHapus.php?id=<?= $row['id_buku']; ?>" role="button">Hapus</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <a class="navbar-brand" href="#">Copyright @Muhammad Fadhil AY</a>
