@@ -127,15 +127,13 @@ include_once "footer.php";
                 <?php
 
 
-                    echo "Min Support Absolut: " . $_POST['min_support'];
+                    echo "Min Support : " . $_POST['min_support'];
                     echo "<br>";
                     $sql = "SELECT COUNT(*) FROM transaksi 
         WHERE transaction_date BETWEEN '$start' AND '$end' ";
                     $res = $db_object->db_query($sql);
                     $num = $db_object->db_fetch_array($res);
                     $minSupportRelatif = ($_POST['min_support'] / $num[0]) * 100;
-                    echo "Min Support Relatif: " . $minSupportRelatif;
-                    echo "<br>";
                     echo "Min Confidence: " . $_POST['min_confidence'];
                     echo "<br>";
                     echo "Start Date: " . $_POST['range_tanggal'];
@@ -248,3 +246,4 @@ include_once "footer.php";
         </div>
     </div>
 </div>
+<br><br><br>

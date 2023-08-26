@@ -87,20 +87,20 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     $result_trans = $db_object->db_query($sql_trans);
     $dataTransaksi = $item_list = array();
     $jumlah_transaksi = $db_object->db_num_rows($result_trans);
-    $min_support_relative = ($min_support / $jumlah_transaksi) * 100;
     $x = 0;
     while ($myrow = $db_object->db_fetch_array($result_trans)) {
         $dataTransaksi[$x]['tanggal'] = $myrow['transaction_date'];
         $item_produk = $myrow['produk'] . ",";
+
         //mencegah ada jarak spasi
-        $item_produk = str_replace(" ,", ",", $item_produk);
-        $item_produk = str_replace("  ,", ",", $item_produk);
-        $item_produk = str_replace("   ,", ",", $item_produk);
-        $item_produk = str_replace("    ,", ",", $item_produk);
-        $item_produk = str_replace(", ", ",", $item_produk);
-        $item_produk = str_replace(",  ", ",", $item_produk);
-        $item_produk = str_replace(",   ", ",", $item_produk);
-        $item_produk = str_replace(",    ", ",", $item_produk);
+        // $item_produk = str_replace(" ,", ",", $item_produk);
+        // $item_produk = str_replace("  ,", ",", $item_produk);
+        // $item_produk = str_replace("   ,", ",", $item_produk);
+        // $item_produk = str_replace("    ,", ",", $item_produk);
+        // $item_produk = str_replace(", ", ",", $item_produk);
+        // $item_produk = str_replace(",  ", ",", $item_produk);
+        // $item_produk = str_replace(",   ", ",", $item_produk);
+        // $item_produk = str_replace(",    ", ",", $item_produk);
 
         $dataTransaksi[$x]['produk'] = $item_produk;
         $produk = explode(",", $myrow['produk']);
@@ -122,7 +122,7 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     echo "<table class='table table-bordered table-striped  table-hover'>
             <tr>
                 <th>No</th>
-                <th>Item</th>
+                <th>Item yang Dipinjam</th>
                 <th>Jumlah</th>
                 <th>Suppport</th>
                 <th>Keterangan</th>
@@ -131,8 +131,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     $x = 1;
     foreach ($item_list as $key => $item) {
         $jumlah = jumlah_itemset1($dataTransaksi, $item);
-        $support = ($jumlah / $jumlah_transaksi) * 100;
-        $lolos = ($support >= $min_support_relative) ? "1" : "0";
+        $support = ($jumlah / $jumlah_transaksi);
+        $lolos = ($support >= $min_support) ? "1" : "0";
         $valueIn[] = "('$item','$jumlah','$support','$lolos','$id_process')";
         if ($lolos) {
             $itemset1[] = $item; //item yg lolos itemset1
@@ -206,8 +206,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
                         $NilaiAtribut1[] = $variance1;
                         $NilaiAtribut2[] = $variance2;
 
-                        $support2 = ($jml_itemset2 / $jumlah_transaksi) * 100;
-                        $lolos = ($support2 >= $min_support_relative) ? 1 : 0;
+                        $support2 = ($jml_itemset2 / $jumlah_transaksi);
+                        $lolos = ($support2 >= $min_support) ? 1 : 0;
 
                         $valueIn_itemset2[] = "('$variance1','$variance2','$jml_itemset2','$support2','$lolos','$id_process')";
                         if ($lolos) {
@@ -322,8 +322,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
                             //jumlah item set3 dan menghitung supportnya
                             //$jml_itemset3 = get_count_itemset3($db_object, $itemset1, $itemset2, $itemset3, $start_date, $end_date);
                             $jml_itemset3 = jumlah_itemset3($dataTransaksi, $itemset1, $itemset2, $itemset3);
-                            $support3 = ($jml_itemset3 / $jumlah_transaksi) * 100;
-                            $lolos = ($support3 >= $min_support_relative) ? 1 : 0;
+                            $support3 = ($jml_itemset3 / $jumlah_transaksi);
+                            $lolos = ($support3 >= $min_support) ? 1 : 0;
 
                             $valueIn_itemset3[] = "('$itemset1','$itemset2','$itemset3','$jml_itemset3','$support3','$lolos','$id_process')";
 
@@ -673,12 +673,12 @@ function hitung_confidence(
     //    while($row1_ = $db_object->db_fetch_array($res1_)){
     //hitung nilai support $nilai_support_x seperti di itemset2
     $jml_itemset2 = jumlah_itemset2($dataTransaksi, $atribut1, $atribut2);
-    $nilai_support_x = ($jml_itemset2 / $jumlah_transaksi) * 100;
+    $nilai_support_x = ($jml_itemset2 / $jumlah_transaksi);
 
     $kombinasi1 = $atribut1 . " , " . $atribut2;
     $kombinasi2 = $atribut3;
     $supp_x = $nilai_support_x; //$row1_['support'];
-    $conf = ($supp_xuy / $supp_x) * 100;
+    $conf = ($supp_xuy / $supp_x);
     //lolos seleksi min confidence itemset3
     $lolos = ($conf >= $min_confidence) ? 1 : 0;
 
@@ -754,12 +754,12 @@ function hitung_confidence1(
     //        while($row4_ = $db_object->db_fetch_array($res4_)){
     //hitung nilai support seperti itemset1
     $jml_itemset1 = jumlah_itemset1($dataTransaksi, $atribut1);
-    $nilai_support_x = ($jml_itemset1 / $jumlah_transaksi) * 100;
+    $nilai_support_x = ($jml_itemset1 / $jumlah_transaksi);
 
     $kombinasi1 = $atribut1;
     $kombinasi2 = $atribut2 . " , " . $atribut3;
     $supp_x = $nilai_support_x; //$row4_['support'];
-    $conf = ($supp_xuy / $supp_x) * 100;
+    $conf = ($supp_xuy / $supp_x);
     //lolos seleksi min confidence itemset3
     $lolos = ($conf >= $min_confidence) ? 1 : 0;
 
@@ -823,12 +823,12 @@ function hitung_confidence2(
     //        while($row1_ = $db_object->db_fetch_array($res1_)){
     //hitung nilai support seperti itemset1
     $jml_itemset1 = jumlah_itemset1($dataTransaksi, $atribut1);
-    $nilai_support_x = ($jml_itemset1 / $jumlah_transaksi) * 100;
+    $nilai_support_x = ($jml_itemset1 / $jumlah_transaksi);
 
     $kombinasi1 = $atribut1;
     $kombinasi2 = $atribut2;
     $supp_x = $nilai_support_x; //$row1_['support'];
-    $conf = ($supp_xuy / $supp_x) * 100;
+    $conf = ($supp_xuy / $supp_x);
     //lolos seleksi min confidence itemset3
     $lolos = ($conf >= $min_confidence) ? 1 : 0;
 
