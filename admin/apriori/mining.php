@@ -654,7 +654,7 @@ function get_count_itemset3($db_object, $atribut1, $atribut2, $atribut3, $start_
  */
 function hitung_confidence(
     $db_object,
-    $supp_xuy,
+    $supp_xuy = 0,
     $min_support,
     $min_confidence,
     $atribut1,
@@ -736,7 +736,7 @@ function hitung_confidence(
  */
 function hitung_confidence1(
     $db_object,
-    $supp_xuy,
+    $supp_xuy = 0,
     $min_support,
     $min_confidence,
     $atribut1,
