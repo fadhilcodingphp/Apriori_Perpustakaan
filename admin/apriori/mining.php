@@ -82,28 +82,31 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     //remove reset truncate (change to log mode)
     //reset_temporary($db_object);
     //get  transaksi data to array variable
-    $sql_trans = "SELECT * FROM transaksi 
-            WHERE transaction_date BETWEEN '$start_date' AND '$end_date' ";
+    $where = "ga gal";
+    if (isset($_POST['range_tanggal'])) {
+        $tgl = explode(" - ", $_POST['range_tanggal']);
+        $start = format_date($tgl[0]);
+        $end = format_date($tgl[1]);
+
+        $where = " WHERE tgl_pinjam "
+            . " BETWEEN '$start' AND '$end'";
+    }
+    $sqltgl = "SELECT DISTINCT tgl_pinjam FROM riwayatpinjam" . $where;
+    $query = $db_object->db_query($sqltgl);
+    $jumlah_transaksi = $db_object->db_num_rows($query);
+    echo "Jumlah Transaksi : $jumlah_transaksi";
+
+    $sql_trans = "SELECT * FROM riwayatpinjam 
+            WHERE tgl_pinjam BETWEEN '$start_date' AND '$end_date' ORDER BY judul_buku ";
     $result_trans = $db_object->db_query($sql_trans);
     $dataTransaksi = $item_list = array();
-    $jumlah_transaksi = $db_object->db_num_rows($result_trans);
     $x = 0;
     while ($myrow = $db_object->db_fetch_array($result_trans)) {
-        $dataTransaksi[$x]['tanggal'] = $myrow['transaction_date'];
-        $item_produk = $myrow['produk'] . ",";
+        $dataTransaksi['judul_buku'] = ['tgl_pinjam'];
+        $item_produk = $myrow['judul_buku'] . ",";
 
-        //mencegah ada jarak spasi
-        // $item_produk = str_replace(" ,", ",", $item_produk);
-        // $item_produk = str_replace("  ,", ",", $item_produk);
-        // $item_produk = str_replace("   ,", ",", $item_produk);
-        // $item_produk = str_replace("    ,", ",", $item_produk);
-        // $item_produk = str_replace(", ", ",", $item_produk);
-        // $item_produk = str_replace(",  ", ",", $item_produk);
-        // $item_produk = str_replace(",   ", ",", $item_produk);
-        // $item_produk = str_replace(",    ", ",", $item_produk);
-
-        $dataTransaksi[$x]['produk'] = $item_produk;
-        $produk = explode(",", $myrow['produk']);
+        $dataTransaksi[$x]['judul_buku'] = $item_produk;
+        $produk = explode(",", $myrow['judul_buku']);
         //all items
         foreach ($produk as $key => $value_produk) {
             //if(!in_array($value_produk, $item_list)){
@@ -149,6 +152,7 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
         $x++;
     }
     echo "</table>";
+
     //insert into itemset1 one query with many value
     $value_insert = implode(",", $valueIn);
     $sql_insert_itemset1 = "INSERT INTO itemset1 (atribut, jumlah, support, lolos, id_process) "
@@ -193,20 +197,20 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     $valueIn_itemset2 = array();
     $no = 1;
     $a = 0;
-    while ($a <= count($itemset1)) {
+    while ($a <= 6) {
         $b = 0;
-        while ($b <= count($itemset1)) {
+        while ($b <= 7) {
             $variance1 = $itemset1[$a];
             $variance2 = $itemset1[$b];
             if (!empty($variance1) && !empty($variance2)) {
                 if ($variance1 != $variance2) {
                     if (!is_exist_variasi_itemset($NilaiAtribut1, $NilaiAtribut2, $variance1, $variance2)) {
-                        //$jml_itemset2 = get_count_itemset2($db_object, $variance1, $variance2, $start_date, $end_date);
-                        $jml_itemset2 = jumlah_itemset2($dataTransaksi, $variance1, $variance2);
+                        $jml_itemset2 = get_count_itemset2($db_object, $variance1, $variance2, $start_date, $end_date);
+                        // $jml_itemset2 = jumlah_itemset1($dataTransaksi, $variance1, $variance2);
                         $NilaiAtribut1[] = $variance1;
                         $NilaiAtribut2[] = $variance2;
 
-                        $support2 = ($jml_itemset2 / $jumlah_transaksi);
+                        $support2 = $jml_itemset2 / $jumlah_transaksi;
                         $lolos = ($support2 >= $min_support) ? 1 : 0;
 
                         $valueIn_itemset2[] = "('$variance1','$variance2','$jml_itemset2','$support2','$lolos','$id_process')";
@@ -619,12 +623,12 @@ function is_exist_variasi_on_itemset3($array, $tiga_variasi)
 
 function get_count_itemset2($db_object, $atribut1, $atribut2, $start_date, $end_date)
 {
-    $sql = "SELECT COUNT(transaction_date) AS jml, transaction_date 
-            FROM transaksi 
-            WHERE (produk='$atribut1' OR produk = '$atribut2') 
-                AND transaction_date BETWEEN '$start_date' AND '$end_date' 
-            GROUP BY transaction_date
-            HAVING COUNT(transaction_date)=2";
+    $sql = "SELECT COUNT(tgl_pinjam) AS jml, tgl_pinjam 
+            FROM riwayatpinjam 
+            WHERE (judul_buku='$atribut1' OR judul_buku = '$atribut2') 
+                AND tgl_pinjam BETWEEN '$start_date' AND '$end_date' 
+            GROUP BY tgl_pinjam
+            HAVING COUNT(tgl_pinjam)=2";
     $result = $db_object->db_query($sql);
     $jml = $db_object->db_num_rows($result);
     return $jml;
@@ -632,11 +636,11 @@ function get_count_itemset2($db_object, $atribut1, $atribut2, $start_date, $end_
 
 function get_count_itemset3($db_object, $atribut1, $atribut2, $atribut3, $start_date, $end_date)
 {
-    $sql = "SELECT COUNT(transaction_date) AS jml, transaction_date FROM transaksi 
-            WHERE (produk='$atribut1' OR produk = '$atribut2'  OR produk = '$atribut3') 
-                AND transaction_date BETWEEN '$start_date' AND '$end_date' 
-            GROUP BY transaction_date
-            HAVING COUNT(transaction_date)=3";
+    $sql = "SELECT COUNT(tgl_pinjam) AS jml, tgl_pinjam FROM riwayatpinjam 
+            WHERE (judul_buku='$atribut1' OR judul_buku = '$atribut2'  OR judul_buku = '$atribut3') 
+                AND tgl_pinjam BETWEEN '$start_date' AND '$end_date' 
+            GROUP BY tgl_pinjam
+            HAVING COUNT(tgl_pinjam)=3";
     $result = $db_object->db_query($sql);
     $jml = $db_object->db_num_rows($result);
     return $jml;
@@ -877,7 +881,7 @@ function jumlah_itemset1($transaksi_list, $produk)
 {
     $count = 0;
     foreach ($transaksi_list as $key => $data) {
-        $items = "," . strtoupper($data['produk']);
+        $items = "," . strtoupper($data['judul_buku']);
         $item_cocok = "," . strtoupper($produk) . ",";
         $pos = strpos($items, $item_cocok);
         if ($pos !== false) { //was found at position $pos
@@ -891,7 +895,7 @@ function jumlah_itemset2($transaksi_list, $variasi1, $variasi2)
 {
     $count = 0;
     foreach ($transaksi_list as $key => $data) {
-        $items = "," . strtoupper($data['produk']);
+        $items = "," . strtoupper($data['judul_buku']);
         $item_variasi1 = "," . strtoupper($variasi1) . ",";
         $item_variasi2 = "," . strtoupper($variasi2) . ",";
 
@@ -908,7 +912,7 @@ function jumlah_itemset3($transaksi_list, $variasi1, $variasi2, $variasi3)
 {
     $count = 0;
     foreach ($transaksi_list as $key => $data) {
-        $items = "," . strtoupper($data['produk']);
+        $items = "," . strtoupper($data['judul_buku']);
         $item_variasi1 = "," . strtoupper($variasi1) . ",";
         $item_variasi2 = "," . strtoupper($variasi2) . ",";
         $item_variasi3 = "," . strtoupper($variasi3) . ",";

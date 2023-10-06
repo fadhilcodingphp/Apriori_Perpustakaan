@@ -48,7 +48,7 @@ function list_users($name, $selected_id = '', $required = false, $all = false, $
 {
     $db_obj = new database();
 
-    $table = TB_PREF . "users";
+    $table = "users";
     $query = $db_obj->display_table_all_column($table, $where, false, false, 0, 0, 'nama');
     echo "<select name='$name' ";
     if ($required) echo "required='required'";

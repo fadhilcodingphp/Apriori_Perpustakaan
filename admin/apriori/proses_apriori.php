@@ -129,8 +129,8 @@ include_once "footer.php";
 
                     echo "Min Support : " . $_POST['min_support'];
                     echo "<br>";
-                    $sql = "SELECT COUNT(*) FROM transaksi 
-        WHERE transaction_date BETWEEN '$start' AND '$end' ";
+                    $sql = "SELECT COUNT(*) FROM riwayatpinjam 
+        WHERE tgl_pinjam BETWEEN '$start' AND '$end' ";
                     $res = $db_object->db_query($sql);
                     $num = $db_object->db_fetch_array($res);
                     $minSupportRelatif = ($_POST['min_support'] / $num[0]) * 100;
@@ -162,13 +162,10 @@ include_once "footer.php";
                     $start = format_date($tgl[0]);
                     $end = format_date($tgl[1]);
 
-                    $where = " WHERE transaction_date "
+                    $where = " WHERE tgl_pinjam "
                         . " BETWEEN '$start' AND '$end'";
                 }
-                $sql = "SELECT
-        *
-        FROM
-         transaksi " . $where;
+                $sql = "SELECT * FROM riwayatpinjam " . $where;
 
                 $query = $db_object->db_query($sql);
                 $jumlah = $db_object->db_num_rows($query);
@@ -232,8 +229,8 @@ include_once "footer.php";
                         while ($row = $db_object->db_fetch_array($query)) {
                             echo "<tr>";
                             echo "<td>" . $no . "</td>";
-                            echo "<td>" . $row['transaction_date'] . "</td>";
-                            echo "<td>" . $row['produk'] . "</td>";
+                            echo "<td>" . $row['tgl_pinjam'] . "</td>";
+                            echo "<td>" . $row['judul_buku'] . "</td>";
                             echo "</tr>";
                             $no++;
                         }

@@ -24,7 +24,7 @@ $ubah = query("SELECT * FROM users WHERE username = '$id'")[0];
                 ?>
                 Jumlah Judul : <b><?= $count1; ?></b> buku</h5>
             <p class="card-text">Tersedia berbagai macam judul buku</p>
-            <a href="daftarbuku.php?id=PSNL007">Selengkapnya>>></a>
+            <a href="buku.php">Selengkapnya>>></a>
         </div>
     </div>
     <div class="card">
