@@ -28,7 +28,8 @@ $ubah = query("SELECT * FROM kategoribuku WHERE id_kategori = '$id'")[0];
                     ?>
                     <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                         <span class="card ml-3 mt-3" style="width: 16rem;">
-                            <img style="margin: 0 auto; padding-top: 10px;" width="150px" src="assets/img/<?php echo $pecah['Gambar']; ?>" alt="Gambar Belum Diupload">
+                            <p style="font-size: 14px; padding: 10px; font-weight: 800;">Recommended</p>
+                            <img style="margin: 0 auto; padding-top: 5px;" width="150px" src="assets/img/<?php echo $pecah['Gambar']; ?>" alt="Gambar Belum Diupload">
                             <span class="card-body">
                                 <h5 class="card-title"><?= $pecah['judul_buku']; ?></h5>
                             </span>
@@ -40,6 +41,22 @@ $ubah = query("SELECT * FROM kategoribuku WHERE id_kategori = '$id'")[0];
                                     </div>
                                     <div class="col-sm-5 text-secondary">
                                         : <?php echo $pecah["jumlah_buku"] ?> buku
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h6 class="mb-0">Penerbit</h6>
+                                    </div>
+                                    <div class="col-sm-5 text-secondary">
+                                        : Erlangga
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h6 class="mb-0">Tahun Terbit</h6>
+                                    </div>
+                                    <div class="col-sm-5 text-secondary">
+                                        : 2017
                                     </div>
                                 </div>
                                 <div class="row mb-3">
