@@ -194,6 +194,9 @@ function tambahBuku($Buku)
     $id_rak = htmlspecialchars($Buku["id_rak"]);
     $id_buku = htmlspecialchars($Buku["id_buku"]);
     $judul_buku = addslashes($Buku["judul_buku"]);
+    $pengarang = addslashes($Buku["pengarang"]);
+    $penerbit = addslashes($Buku["penerbit"]);
+    $thn_terbit = addslashes($Buku["thn_terbit"]);
     $jumlah_buku = htmlspecialchars($Buku["jumlah_buku"]);
 
     $Gambar = uploadGambar();
@@ -202,7 +205,7 @@ function tambahBuku($Buku)
     }
 
     //query insert data
-    $inputProduk = "INSERT INTO buku VALUES ('$id_buku', '$id_kategori', '$judul_buku', '$jumlah_buku', '$Gambar', '$id_rak')";
+    $inputProduk = "INSERT INTO buku VALUES ('$id_buku', '$id_kategori', '$judul_buku', '$jumlah_buku', '$pengarang', '$penerbit', '$thn_terbit', '$Gambar', '$id_rak')";
     mysqli_query($koneksi, $inputProduk);
 
     return mysqli_affected_rows($koneksi);

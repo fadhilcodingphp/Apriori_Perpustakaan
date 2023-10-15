@@ -33,41 +33,10 @@ require 'header.php';
                             <span class="card-body">
                                 <h5 class="card-title"><?= $pecah['judul_buku']; ?></h5>
                             </span>
+                            <p style="padding-left: 20px; font-size: 10px;">Untuk informasi buku lebih lanjut silahkan klik tombol dibawah ini</p>
                             <hr>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h6 class="mb-0">Jumlah</h6>
-                                    </div>
-                                    <div class="col-sm-5 text-secondary">
-                                        : <?php echo $pecah["jumlah_buku"] ?> buku
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h6 class="mb-0">Penerbit</h6>
-                                    </div>
-                                    <div class="col-sm-5 text-secondary">
-                                        : Erlangga
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h6 class="mb-0">Tahun Terbit</h6>
-                                    </div>
-                                    <div class="col-sm-5 text-secondary">
-                                        : 2017
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-6">
-                                        <h6 class="mb-0">Letak Buku</h6>
-                                    </div>
-                                    <div class="col-sm-5 text-secondary">
-                                        : RBK001
-                                    </div>
-                                </div>
-                            </div>
+                            <a href="bukuDetail.php?id=<?= $pecah['id_buku']; ?>" class="btn btn-primary">Detail>>></a>
+                            <hr>
                         </span>
                     <?php } ?>
                 </div>

@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
     } else {
         echo "
         <script>
-        alert('Produk gagal ditambahkan');
+        alert('Buku gagal ditambahkan');
         document.location.href='bukuTambah.php';
         </script>
         ";
@@ -57,6 +57,18 @@ if (isset($_POST["submit"])) {
                         <input type="text" class="form-control" name="judul_buku">
                     </div>
                     <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Pengarang*</label>
+                        <input type="text" class="form-control" name="pengarang">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Penerbit*</label>
+                        <input type="text" class="form-control" name="penerbit">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Tahun Terbit*</label>
+                        <input type="text" class="form-control" name="thn_terbit">
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Jumlah Buku*</label>
                         <input type="text" class="form-control" name="jumlah_buku">
                     </div>
@@ -66,7 +78,7 @@ if (isset($_POST["submit"])) {
                             <select class="form-control" aria-label="Default select example" name="id_rak">
                                 <option selected>---</option>
                                 <?php
-                                $ambil = mysqli_query($koneksi, "SELECT * FROM rakbuku");
+                                $ambil = mysqli_query($koneksi, "SELECT * FROM rakbuku ORDER BY nama_rak");
                                 while ($pecah = mysqli_fetch_assoc($ambil)) {
                                     echo "<option value=$pecah[id_rak]> $pecah[nama_rak]</option>";
                                 }
