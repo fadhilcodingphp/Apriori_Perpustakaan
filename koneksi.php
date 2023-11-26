@@ -205,7 +205,7 @@ function tambahBuku($Buku)
     }
 
     //query insert data
-    $inputProduk = "INSERT INTO buku VALUES ('$id_buku', '$id_kategori', '$judul_buku', '$jumlah_buku', '$pengarang', '$penerbit', '$thn_terbit', '$Gambar', '$id_rak')";
+    $inputProduk = "INSERT INTO buku VALUES ('$id_buku', '$id_kategori', '$judul_buku', '$jumlah_buku', '$pengarang', '$penerbit', '$thn_terbit', '$Gambar', '$id_rak', 'empty')";
     mysqli_query($koneksi, $inputProduk);
 
     return mysqli_affected_rows($koneksi);
@@ -219,14 +219,33 @@ function ubahBuku($produk)
     $id_kategori = htmlspecialchars($produk["id_kategori"]);
     $id_rak = htmlspecialchars($produk["id_rak"]);
     $judul_buku = addslashes($produk["judul_buku"]);
+    $pengarang = addslashes($produk["pengarang"]);
+    $penerbit = addslashes($produk["penerbit"]);
+    $thn_terbit = addslashes($produk["thn_terbit"]);
     $jumlah_buku = htmlspecialchars($produk["jumlah_buku"]);
+    $status = htmlspecialchars($produk["status"]);
+
+    $gambarLama = htmlspecialchars($produk["gambarLama"]);
+
+    //cek apakah user pilig gambar baru atau tidak 
+    if ($_FILES['Gambar']['error'] === 4) {
+        $Gambar = $gambarLama;
+    } else {
+        //upload gambar
+        $Gambar = uploadGambar();
+    }
 
     //query ubah data
     $ubahproduk = "UPDATE buku SET
                     id_kategori = '$id_kategori',
-                    id_rak = '$id_rak',
                     judul_buku = '$judul_buku',
-                    jumlah_buku = '$jumlah_buku'
+                    jumlah_buku = '$jumlah_buku',
+                    pengarang = '$pengarang',
+                    penerbit = '$penerbit',
+                    thn_terbit = '$thn_terbit',
+                    Gambar = '$Gambar',
+                    id_rak = '$id_rak',
+                    status = '$status'
                     WHERE id_buku = '$id_buku'";
     mysqli_query($koneksi, $ubahproduk);
     return mysqli_affected_rows($koneksi);
@@ -237,10 +256,10 @@ function tambahPeminjam($data)
 {
     global $koneksi;
     //ambil data dari tiap elemen form
-    $id_pinjam = htmlspecialchars($data["id_pinjam"]);
-    $nama_peminjam = htmlspecialchars($data["nama_peminjam"]);
-    $kelas_peminjam = htmlspecialchars($data["kelas_peminjam"]);
-    $judul_buku = htmlspecialchars($data["judul_buku"]);
+    $id_pinjam = $_POST["id_pinjam"];
+    $nama_peminjam = $_POST["nama"];
+    $kelas_peminjam = $_POST["kelas_peminjam"];
+    $judul_buku = $_POST["judul_buku"];
 
     //query insert data
     $addpinjam = "INSERT INTO riwayatpinjam VALUES ('$id_pinjam', '$nama_peminjam', '$kelas_peminjam', '$judul_buku', NOW(), '')";

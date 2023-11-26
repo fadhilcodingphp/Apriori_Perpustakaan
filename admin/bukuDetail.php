@@ -4,7 +4,10 @@ require 'header.php';
 //ambil data di URL
 $id = $_GET["id"];
 // query data mhs berdasarkan id
-$ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND buku.id_kategori = kategoribuku.id_kategori")[0];
+$ambildata = query("SELECT * FROM buku 
+INNER JOIN kategoribuku ON buku.id_kategori = kategoribuku.id_kategori
+INNER JOIN rakbuku ON buku.id_rak = rakbuku.id_rak
+WHERE buku.id_buku = '$id'")[0];
 ?>
 <title>Detail Buku | Rule Library</title>
 <div class="editbook">
@@ -61,6 +64,33 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
+                                    <h6 class="mb-0">Pengarang</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <?php echo $ambildata["pengarang"] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Penerbit</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <?php echo $ambildata["penerbit"] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Tahun Terbit</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <?php echo $ambildata["thn_terbit"] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
                                     <h6 class="mb-0">Jumlah Buku</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
@@ -73,7 +103,7 @@ $ambildata = query("SELECT * FROM buku, kategoribuku WHERE id_buku = '$id' AND b
                                     <h6 class="mb-0">Letak Buku</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <?php echo $ambildata["id_rak"] ?>
+                                    <?php echo $ambildata["nama_rak"] ?>
                                 </div>
                             </div>
                             <hr>

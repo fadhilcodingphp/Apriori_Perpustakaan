@@ -4,7 +4,10 @@ require 'header.php';
 //ambil data di URL
 $id = $_GET["id"];
 // query data mhs berdasarkan id
-$ambildata = query("SELECT * FROM buku, rakbuku WHERE id_buku = '$id' AND buku.id_rak = rakbuku.id_rak")[0];
+$ambildata = query("SELECT * FROM buku 
+INNER JOIN kategoribuku ON buku.id_kategori = kategoribuku.id_kategori
+INNER JOIN rakbuku ON buku.id_rak = rakbuku.id_rak
+WHERE buku.id_buku = '$id'")[0];
 ?>
 <title>Detail Buku | Rule Library</title>
 <div class="editbook">
@@ -29,6 +32,15 @@ $ambildata = query("SELECT * FROM buku, rakbuku WHERE id_buku = '$id' AND buku.i
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     : <?php echo $ambildata["id_buku"] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Kategori</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    : <?php echo $ambildata["nama_kategori"] ?>
                                 </div>
                             </div>
                             <hr>

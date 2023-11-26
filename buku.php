@@ -28,7 +28,11 @@ require 'header.php';
                     ?>
                     <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                         <span class="card ml-3 mt-3" style="width: 16rem;">
-                            <p style="font-size: 14px; padding: 10px; font-weight: 800;">Recommended</p>
+                            <?php
+                            $status = $pecah['status'];
+                            if ($status == "1") { ?>
+                                <p style="font-size: 14px; padding: 10px; font-weight: 800;">Recommended</p>
+                            <?php } ?>
                             <img style="margin: 0 auto; padding-top: 5px;" width="150px" src="assets/img/<?php echo $pecah['Gambar']; ?>" alt="Gambar Belum Diupload">
                             <span class="card-body">
                                 <h5 class="card-title"><?= $pecah['judul_buku']; ?></h5>

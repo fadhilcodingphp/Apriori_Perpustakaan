@@ -20,7 +20,7 @@ if (isset($_POST["submit"])) {
     error_reporting();
 }
 ?>
-
+<title>Tambah Peminjam | Rule Library</title>
 <div class="container">
     <div class="row" style="margin-bottom: 100px;">
         <div class="col">
@@ -41,13 +41,23 @@ if (isset($_POST["submit"])) {
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Nama Peminjam*</label>
-                        <input type="text" class="form-control" name="nama_peminjam">
+                        <div class="col-15">
+                            <select class="form-control" aria-label="Default select example" name="nama">
+                                <option selected>---</option>
+                                <?php
+                                $ambil = mysqli_query($koneksi, "SELECT * FROM users ORDER BY nama");
+                                while ($pecah = mysqli_fetch_assoc($ambil)) {
+                                    echo "<option value=$pecah[nama]> $pecah[nama]</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Kelas*</label>
                         <div class="col-15">
-                            <select class="form-control" aria-label="Default select example" name="kelas_peminjam">
-                                <option disabled="disabled" selected="selected" class="form-select" name="kelas_peminjam">--Pilih Kelas--</option>
+                            <select class="form-control" aria-label="Default select example" name="kelas_peminjam" required>
+                                <option selected></option>
                                 <option>X TKJ</option>
                                 <option>XI TKJ</option>
                                 <option>XII TKJ</option>
@@ -71,7 +81,17 @@ if (isset($_POST["submit"])) {
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Judul Buku*</label>
-                        <input type="text" class="form-control" name="judul_buku">
+                        <div class="col-15">
+                            <select class="form-control" aria-label="Default select example" name="judul_buku" required>
+                                <option selected></option>
+                                <?php
+                                $ambil = mysqli_query($koneksi, "SELECT * FROM buku ORDER BY judul_buku");
+                                while ($pecah = mysqli_fetch_assoc($ambil)) {
+                                    echo "<option value=$pecah[judul_buku]> $pecah[judul_buku]</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary" name="submit">Tambah Peminjam</button>
                 </form>
